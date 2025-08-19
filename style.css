@@ -1,4 +1,4 @@
-/* ===== UslygiKant.kg — Живой светлый дизайн (обновлено) ===== */
+/* ===== UslygiKant.kg — Живой светлый дизайн (фикс кнопок) ===== */
 
 :root{
   --bg:#f3f6ff;          /* общий фон (слегка голубой) */
@@ -26,37 +26,31 @@ img{max-width:100%;display:block;border-radius:14px}
 .muted{color:var(--muted)}
 h1,h2{letter-spacing:.2px}
 
-/* ==== Кнопки (фикс обрезания) ==== */
+/* ==== Кнопки (исправление обрезания) ==== */
+.cta{
+  display:flex;gap:14px;flex-wrap:wrap;justify-content:center;align-items:center;margin-top:22px;
+}
 .btn{
-  display:inline-block;
-  padding:12px 20px;                 /* меньше вертикальный паддинг */
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:10px 18px;               /* компактнее — не режется */
   border-radius:12px;
   background:linear-gradient(90deg,var(--brand),var(--brand-3));
-  color:#fff;font-weight:700;
-  border:1px solid transparent;
-  box-shadow:0 6px 18px rgba(37,99,235,.28);
+  color:#fff;font-weight:700;font-size:15px;line-height:1.2;
+  border:none;white-space:nowrap;  /* текст не переносится внутри */
+  box-shadow:0 4px 14px rgba(37,99,235,.25);
   transition:.25s;
-  white-space:nowrap;                /* текст не переносится */
 }
-.btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(37,99,235,.38)}
-
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,235,.35)}
 .btn-outline{
   background:#fff;border:1px solid var(--border);color:var(--text);
   box-shadow:var(--shadow-sm);
 }
-.btn-outline:hover{background:#f8fafc}
-
-/* контейнер с кнопками (фикс зазора) */
-.cta{
-  display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:20px;
-}
+.btn-outline:hover{background:#f1f5f9}
 
 /* ==== Шапка ==== */
 .hdr{
-  position:sticky;top:0;z-index:20;
-  background:rgba(255,255,255,.85);
-  backdrop-filter:saturate(120%) blur(8px);
-  border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:20;background:rgba(255,255,255,.85);
+  backdrop-filter:saturate(120%) blur(8px);border-bottom:1px solid var(--border);
 }
 .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:900}
@@ -66,16 +60,13 @@ h1,h2{letter-spacing:.2px}
 
 /* ==== Хиро-блок с волной и анимацией ==== */
 .hero{
-  position:relative;overflow:hidden;color:#fff;text-align:center;
-  padding:68px 0 60px;
+  position:relative;overflow:hidden;color:#fff;text-align:center;padding:68px 0 60px;
   background:
     radial-gradient(1200px 450px at 50% -180px, rgba(96,165,250,.55) 0%, transparent 60%),
-    linear-gradient(135deg, #2563eb 0%, #60a5fa 45%, #10b981 110%);
+    linear-gradient(135deg,#2563eb 0%,#60a5fa 45%,#10b981 110%);
 }
 .hero h1{font-size:42px;line-height:1.15;margin:0 0 12px;animation:fadeDown .9s ease both}
 .hero p{color:rgba(255,255,255,.94);margin:0;animation:fadeUp 1s .1s ease both}
-
-/* волна снизу (SVG) */
 .hero::after{
   content:"";position:absolute;left:0;right:0;bottom:-1px;height:86px;
   background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 140" preserveAspectRatio="none"><path fill="%23ffffff" d="M0,96L80,106.7C160,117,320,139,480,138.7C640,139,800,117,960,117.3C1120,117,1280,139,1360,149.3L1440,160L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"/></svg>') no-repeat center/cover;
@@ -122,8 +113,8 @@ section#how .card{background:#ffffff;border-color:#eaf0ff;box-shadow:0 8px 24px 
 @keyframes fadeDown{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 
-/* ховеры кнопок — лёгкое свечение */
-.btn, .btn-outline{position:relative}
+/* лёгкое свечение у кнопок */
+.btn,.btn-outline{position:relative}
 .btn::after,.btn-outline::after{
   content:"";position:absolute;inset:-2px;border-radius:14px;
   background:radial-gradient(40% 60% at 50% 50%, rgba(16,185,129,.22), transparent 60%);
@@ -139,7 +130,7 @@ section#how .card{background:#ffffff;border-color:#eaf0ff;box-shadow:0 8px 24px 
   .form{grid-template-columns:1fr}
 }
 
-/* уважение к пользователям с reduced motion */
+/* reduced motion — без анимаций для желающих */
 @media (prefers-reduced-motion: reduce){
   *{animation:none!important;transition:none!important}
 }
