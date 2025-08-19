@@ -8,10 +8,7 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* добавка: плавная прокрутка, бейджи и мелочи */
     html{scroll-behavior:smooth}
-    .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-    .badge{background:#eef2ff;color:#1e293b;border:1px solid #e6e8ef;border-radius:999px;padding:6px 10px;font-size:13px}
     .section{padding:26px 0}
     .sub{color:var(--muted);margin-top:2px}
     .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -19,6 +16,8 @@
     .avatar{width:44px;height:44px;border-radius:50%;background:#e5e7eb}
     .faq dt{font-weight:800;margin:12px 0 6px}
     .faq dd{margin:0 0 6px;color:var(--muted)}
+    .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .badge{background:#eef2ff;color:#1e293b;border:1px solid #e6e8ef;border-radius:999px;padding:6px 10px;font-size:13px}
     .floating-cta{position:fixed;left:0;right:0;bottom:14px;display:none;justify-content:center;z-index:30}
     .floating-cta .btn{box-shadow:0 16px 36px rgba(37,99,235,.35)}
     @media (max-width:860px){ .row{grid-template-columns:1fr} .floating-cta{display:flex} }
@@ -29,10 +28,7 @@
   <!-- ШАПКА -->
   <header class="hdr">
     <div class="wrap nav">
-      <div class="brand">
-        <div class="logo"></div>
-        UslygiKant.kg
-      </div>
+      <a class="brand" href="/"><span class="logo"></span><strong>UslygiKant.kg</strong></a>
       <nav class="menu">
         <a href="#cats">Категории</a>
         <a href="#how">Как это работает</a>
@@ -53,7 +49,7 @@
       </div>
       <div class="badges">
         <span class="badge">⭐ 4.8/5 рейтинг</span>
-        <span class="badge">⚡ Среднее время ответа — 15 мин</span>
+        <span class="badge">⚡ Ответ в среднем — 15 мин</span>
         <span class="badge">🛡️ Проверенные профили</span>
       </div>
     </div>
@@ -62,22 +58,10 @@
   <!-- ПРЕИМУЩЕСТВА -->
   <section class="section">
     <div class="wrap grid">
-      <div class="card"><div class="pad">
-        <h3>Проверенные специалисты</h3>
-        <p class="sub">Профили проходят модерацию, есть отзывы и рейтинг.</p>
-      </div></div>
-      <div class="card"><div class="pad">
-        <h3>Быстрый отклик</h3>
-        <p class="sub">Заявки обрабатываются в день обращения.</p>
-      </div></div>
-      <div class="card"><div class="pad">
-        <h3>Честные цены</h3>
-        <p class="sub">Базовые прайсы указаны в карточках категорий.</p>
-      </div></div>
-      <div class="card"><div class="pad">
-        <h3>Удобная связь</h3>
-        <p class="sub">Звонок, WhatsApp или Telegram — как вам удобнее.</p>
-      </div></div>
+      <div class="card"><div class="pad"><h3>Проверенные специалисты</h3><p class="sub">Профили проходят модерацию, есть отзывы и рейтинг.</p></div></div>
+      <div class="card"><div class="pad"><h3>Быстрый отклик</h3><p class="sub">Заявки обрабатываются в день обращения.</p></div></div>
+      <div class="card"><div class="pad"><h3>Честные цены</h3><p class="sub">Базовые прайсы указаны в карточках категорий.</p></div></div>
+      <div class="card"><div class="pad"><h3>Удобная связь</h3><p class="sub">Звонок, WhatsApp или Telegram — как вам удобнее.</p></div></div>
     </div>
   </section>
 
@@ -86,36 +70,127 @@
     <div class="wrap">
       <h2>Категории услуг</h2>
       <p class="sub">Выберите направление — внутри будут типовые задачи и стартовые цены.</p>
-      <div class="grid" style="margin-top:10px">
-        <a class="tile" href="/katalog/renovation.html">
-          <span class="ico">🧱</span>
-          <b>Ремонт и отделка</b>
-          <p>Квартиры под ключ, отделка, дизайн</p>
+
+      <!-- НОВЫЕ ЖИВЫЕ КАРТОЧКИ -->
+      <div class="grid cats">
+        <!-- Ремонт и отделка -->
+        <a class="cat rnv" href="/katalog/renovation.html">
+          <div class="top">
+            <div class="ico">
+              <!-- Кельма + валик -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 3h6v5H14zM7 8l9 9"/><path d="M3 15l7-7 3 3-7 7H3v-3z"/>
+              </svg>
+            </div>
+            <div>
+              <b>Ремонт и отделка</b>
+              <p>Квартиры под ключ, отделка, дизайн</p>
+            </div>
+          </div>
+          <div class="meta">
+            <span class="price">от 1500 cом</span>
+            <span class="submuted">12 мастеров · ★ 4.8</span>
+          </div>
         </a>
-        <a class="tile" href="/katalog/plumbing.html">
-          <span class="ico">🚿</span>
-          <b>Сантехника</b>
-          <p>Протечки, замена труб, установка</p>
+
+        <!-- Сантехника -->
+        <a class="cat plb" href="/katalog/plumbing.html">
+          <div class="top">
+            <div class="ico">
+              <!-- Ключ/труба -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 8h6v3H3zM9 9l6 6"/><path d="M14 14l3 3 4-4-3-3-4 4z"/>
+              </svg>
+            </div>
+            <div>
+              <b>Сантехника</b>
+              <p>Протечки, замена труб, установка</p>
+            </div>
+          </div>
+          <div class="meta">
+            <span class="price">от 600 cом</span>
+            <span class="submuted">9 мастеров · ★ 4.7</span>
+          </div>
         </a>
-        <a class="tile" href="/katalog/electric.html">
-          <span class="ico">💡</span>
-          <b>Электрика</b>
-          <p>Проводка, автоматы, свет</p>
+
+        <!-- Электрика -->
+        <a class="cat elc" href="/katalog/electric.html">
+          <div class="top">
+            <div class="ico">
+              <!-- Лампочка -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18h6M10 22h4"/><path d="M8 10a4 4 0 118 0c0 2-1 3-2 4H10c-1-1-2-2-2-4z"/>
+              </svg>
+            </div>
+            <div>
+              <b>Электрика</b>
+              <p>Проводка, автоматы, свет</p>
+            </div>
+          </div>
+          <div class="meta">
+            <span class="price">от 700 cом</span>
+            <span class="submuted">8 мастеров · ★ 4.8</span>
+          </div>
         </a>
-        <a class="tile" href="/katalog/cleaning.html">
-          <span class="ico">🧹</span>
-          <b>Уборка</b>
-          <p>Квартиры, офисы, после ремонта</p>
+
+        <!-- Уборка -->
+        <a class="cat cln" href="/katalog/cleaning.html">
+          <div class="top">
+            <div class="ico">
+              <!-- Метла/искры -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 15l12-3M8 6l8 8"/><path d="M3 21h14l-2-6H5l-2 6z"/>
+              </svg>
+            </div>
+            <div>
+              <b>Уборка</b>
+              <p>Квартиры, офисы, после ремонта</p>
+            </div>
+          </div>
+          <div class="meta">
+            <span class="price">от 500 cом</span>
+            <span class="submuted">7 бригад · ★ 4.6</span>
+          </div>
         </a>
-        <a class="tile" href="/katalog/delivery.html">
-          <span class="ico">🚚</span>
-          <b>Переезды и доставка</b>
-          <p>Грузчики, газель, сборка мебели</p>
+
+        <!-- Переезды и доставка -->
+        <a class="cat dlv" href="/katalog/delivery.html">
+          <div class="top">
+            <div class="ico">
+              <!-- Грузовик -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 7h10v8H3zM13 9h4l4 4v2h-8z"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/>
+              </svg>
+            </div>
+            <div>
+              <b>Переезды и доставка</b>
+              <p>Грузчики, газель, сборка мебели</p>
+            </div>
+          </div>
+          <div class="meta">
+            <span class="price">от 800 cом</span>
+            <span class="submuted">6 экипажей · ★ 4.7</span>
+          </div>
         </a>
-        <a class="tile" href="/katalog/appliances.html">
-          <span class="ico">🛠️</span>
-          <b>Ремонт техники</b>
-          <p>Стиралки, холодильники</p>
+
+        <!-- Ремонт техники -->
+        <a class="cat app" href="/katalog/appliances.html">
+          <div class="top">
+            <div class="ico">
+              <!-- Ключ + шестерня -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 20l6-6M14 4a4 4 0 104 4"/><path d="M15 15l2 2 3-3-2-2-3 3z"/>
+              </svg>
+            </div>
+            <div>
+              <b>Ремонт техники</b>
+              <p>Стиралки, холодильники</p>
+            </div>
+          </div>
+          <div class="meta">
+            <span class="price">от 700 cом</span>
+            <span class="submuted">5 мастеров · ★ 4.6</span>
+          </div>
         </a>
       </div>
     </div>
@@ -126,22 +201,10 @@
     <div class="wrap">
       <h2>Как это работает</h2>
       <div class="row">
-        <div class="card"><div class="pad">
-          <h3>1. Вы оставляете заявку</h3>
-          <p class="sub">Имя, телефон и кратко опишите задачу — это бесплатно.</p>
-        </div></div>
-        <div class="card"><div class="pad">
-          <h3>2. Мы подбираем мастера</h3>
-          <p class="sub">Отправим варианты с рейтингом и ценой «от».</p>
-        </div></div>
-        <div class="card"><div class="pad">
-          <h3>3. Согласовываем цену</h3>
-          <p class="sub">Мастер связывается с вами, уточняет детали.</p>
-        </div></div>
-        <div class="card"><div class="pad">
-          <h3>4. Работа и отзыв</h3>
-          <p class="sub">Вы оплачиваете работу и оставляете отзыв в профиле.</p>
-        </div></div>
+        <div class="card"><div class="pad"><h3>1. Оставляете заявку</h3><p class="sub">Имя, телефон и кратко опишите задачу — это бесплатно.</p></div></div>
+        <div class="card"><div class="pad"><h3>2. Подбираем мастера</h3><p class="sub">Отправим варианты с рейтингом и ценой «от».</p></div></div>
+        <div class="card"><div class="pad"><h3>3. Согласовываем цену</h3><p class="sub">Мастер связывается с вами, уточняет детали.</p></div></div>
+        <div class="card"><div class="pad"><h3>4. Работа и отзыв</h3><p class="sub">Оплата по факту и отзыв в профиле мастера.</p></div></div>
       </div>
     </div>
   </section>
@@ -151,92 +214,50 @@
     <div class="wrap">
       <h2>Отзывы клиентов</h2>
       <div class="grid">
-        <div class="card"><div class="pad review">
-          <div class="avatar"></div>
-          <div>
-            <b>Айжан</b> <div class="stars">★★★★★</div>
-            <div class="sub">Сантехник приехал через час, заменил смеситель. Всё аккуратно, спасибо!</div>
-          </div>
-        </div></div>
-        <div class="card"><div class="pad review">
-          <div class="avatar"></div>
-          <div>
-            <b>Дастан</b> <div class="stars">★★★★★</div>
-            <div class="sub">Нужно было провести свет на кухню. Быстро и по цене как договаривались.</div>
-          </div>
-        </div></div>
-        <div class="card"><div class="pad review">
-          <div class="avatar"></div>
-          <div>
-            <b>Гульзат</b> <div class="stars">★★★★☆</div>
-            <div class="sub">Заказывала уборку после ремонта — ребята молодцы, рекомендую.</div>
-          </div>
-        </div></div>
+        <div class="card"><div class="pad review"><div class="avatar"></div><div><b>Айжан</b> <div class="stars">★★★★★</div><div class="sub">Сантехник приехал через час, заменил смеситель. Всё аккуратно, спасибо!</div></div></div></div>
+        <div class="card"><div class="pad review"><div class="avatar"></div><div><b>Дастан</b> <div class="stars">★★★★★</div><div class="sub">Нужно было провести свет на кухню. Быстро и по цене как договаривались.</div></div></div></div>
+        <div class="card"><div class="pad review"><div class="avatar"></div><div><b>Гульзат</b> <div class="stars">★★★★☆</div><div class="sub">Заказывала уборку после ремонта — ребята молодцы, рекомендую.</div></div></div></div>
       </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="section">
-    <div class="wrap">
-      <h2>Частые вопросы</h2>
-      <dl class="faq">
-        <dt>Сколько стоит вызов мастера?</dt>
-        <dd>Вызов бесплатный. Оплата — по факту работ. Базовые цены указаны в карточках категорий.</dd>
-        <dt>Как быстро приедет мастер?</dt>
-        <dd>Среднее время отклика — 15–60 минут в рабочее время.</dd>
-        <dt>Как оставить отзыв?</dt>
-        <dd>После завершения работ пришлём ссылку на профиль мастера, там можно поставить оценку и комментарий.</dd>
-      </dl>
     </div>
   </section>
 
   <!-- ФОРМА ЗАЯВКИ -->
   <section class="section lead" id="lead">
     <div class="wrap">
-      <div class="card">
-        <div class="pad">
-          <h2>Оставить заявку</h2>
-          <p class="sub">Мы свяжемся с вами и подберём лучшего мастера рядом.</p>
-          <form class="form" action="https://formspree.io/f/xeoqzadb" method="POST">
-            <input name="name" type="text" placeholder="Ваше имя" required>
-            <input name="phone" type="tel" placeholder="+996 7xx xxx xxx" required>
-            <select name="category" required>
-              <option value="">Категория услуги</option>
-              <option>Ремонт и отделка</option>
-              <option>Сантехника</option>
-              <option>Электрика</option>
-              <option>Уборка</option>
-              <option>Переезды и доставка</option>
-              <option>Ремонт техники</option>
-            </select>
-            <textarea name="task" placeholder="Кратко опишите задачу"></textarea>
-            <button class="btn" type="submit">Отправить заявку</button>
-          </form>
-          <p class="sub">Нажимая «Отправить», вы соглашаетесь с условиями сервиса.</p>
-        </div>
-      </div>
+      <div class="card"><div class="pad">
+        <h2>Оставить заявку</h2>
+        <p class="sub">Мы свяжемся с вами и подберём лучшего мастера рядом.</p>
+        <!-- временная обработка — позже подключим Telegram/WhatsApp/Sheets -->
+        <form class="form" action="https://formspree.io/f/xeoqzadb" method="POST">
+          <input name="name" type="text" placeholder="Ваше имя" required>
+          <input name="phone" type="tel" placeholder="+996 7xx xxx xxx" required>
+          <select name="category" required>
+            <option value="">Категория услуги</option>
+            <option>Ремонт и отделка</option>
+            <option>Сантехника</option>
+            <option>Электрика</option>
+            <option>Уборка</option>
+            <option>Переезды и доставка</option>
+            <option>Ремонт техники</option>
+          </select>
+          <textarea name="task" placeholder="Кратко опишите задачу"></textarea>
+          <button class="btn" type="submit">Отправить заявку</button>
+        </form>
+      </div></div>
     </div>
   </section>
 
   <!-- ФУТЕР -->
   <footer class="ftr">
     <div class="wrap spread">
-      <div>© <span id="y"></span> UslygiKant.kg</div>
-      <div class="badges">
-        <span class="badge">RU/KG</span>
-        <span class="badge">Контакты: +996&nbsp;755&nbsp;18-88-27</span>
-      </div>
+      <p>© <span id="y"></span> UslygiKant.kg</p>
+      <p class="muted"><a href="/policy.html">Политика</a> • <a href="/terms.html">Соглашение</a></p>
     </div>
   </footer>
 
   <!-- Плавающая CTA для мобилок -->
-  <div class="floating-cta">
-    <a href="#lead" class="btn" style="border-radius:18px">Оставить заявку</a>
-  </div>
+  <div class="floating-cta"><a href="#lead" class="btn" style="border-radius:18px">Оставить заявку</a></div>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
