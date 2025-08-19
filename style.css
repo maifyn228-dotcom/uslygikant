@@ -1,37 +1,40 @@
 :root{
-  --bg:#f6f8fb; --panel:#ffffff; --border:#e7ebf2;
-  --text:#0f172a; --muted:#67768a;
-  --brand:#2563eb; --brand-2:#60a5fa;
-  --shadow-sm:0 6px 14px rgba(2,6,23,.06);
-  --shadow-md:0 14px 28px rgba(2,6,23,.10);
+  --bg:#f6f8fb; --card:#fff; --line:#e8edf4;
+  --text:#0f172a; --muted:#5b6b82;
+  --brand:#1da1f2; --brand2:#1fb6ff;
+  --shadow:0 10px 24px rgba(2,6,23,.08);
 }
 
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
   font:16px/1.55 "Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial}
-a{color:inherit;text-decoration:none}
+a{text-decoration:none;color:inherit}
 
 .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-.section{padding:36px 0}
-h1{font-size:40px;line-height:1.15;margin:0 0 10px}
-h2{font-size:26px;margin:0 0 8px}
-h3{font-size:18px;margin:0 0 6px}
-.sub{color:var(--muted)}
-.muted{color:var(--muted)}
 .grid{display:grid;gap:16px}
-.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
 .g3{grid-template-columns:repeat(3,minmax(0,1fr))}
-@media (max-width:960px){.g4{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:720px){.g3{grid-template-columns:1fr}.g4{grid-template-columns:1fr}}
+@media (max-width:900px){.g3{grid-template-columns:1fr}.g2{grid-template-columns:1fr}}
 
-.hdr{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.86);
-  border-bottom:1px solid var(--border);backdrop-filter:saturate(120%) blur(8px)}
-.nav{display:flex;justify-content:space-between;align-items:center;padding:12px 0}
+h1{margin:0 0 8px;font-size:40px;line-height:1.15}
+h2{margin:0 0 10px;font-size:26px}
+h3{margin:0 0 6px;font-size:18px}
+.muted{color:var(--muted)}
+
+.top{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;padding:12px 0}
 .brand{display:flex;align-items:center;gap:10px;font-weight:900}
-.logo{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--brand),var(--brand-2))}
-.menu a{margin-left:16px;color:#324155;font-weight:600}
-.menu a:hover{color:#0b1324}
+.dot{width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,#1fb6ff,#60a5fa)}
+
+.nav a{margin-left:16px;font-weight:600;color:#324155}
+.nav .ghost{border:1px solid var(--line);padding:8px 12px;border-radius:10px}
+.nav .ghost:hover{background:#fff}
 
 .btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  padding:10px
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:10px 16px;border-radius:14px;font-weight:800;border:0;cursor:pointer;
+  background:linear-gradient(90deg,var(--brand),var(--brand2));color:#fff;
+  box-shadow:0 10px 20px rgba(31,182,255,.25);transition:.2s;
+}
+.btn:hover{transform:translate
+
