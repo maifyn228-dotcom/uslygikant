@@ -1,113 +1,94 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>UslygiKant.kg — каталог мастеров Канта</title>
-  <meta name="description" content="Найди проверенного мастера в Канте: ремонт, сантехника, электрика, уборка, доставка и другое. Рейтинг, отзывы, быстрый отклик." />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UslugiKant.kg — Каталог мастеров</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- ===== Header ===== -->
-  <header class="site-header">
-    <div class="container header-row">
-      <a class="logo" href="/">
-        <span class="logo-dot"></span>
-        <span>UslygiKant<span class="kg">.kg</span></span>
-      </a>
-
+  <!-- Шапка -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">UslugiKant.kg</div>
       <nav class="nav">
-        <a href="#categories">Категории</a>
-        <a href="#how">Как это работает</a>
-        <a href="#reviews">Отзывы</a>
-        <a class="btn btn--ghost" href="#request">Оставить заявку</a>
+        <a href="#">Категории</a>
+        <a href="#">Как это работает</a>
+        <a href="#">Отзывы</a>
       </nav>
-      <button class="burger" aria-label="Меню"></button>
+      <a href="#" class="btn btn-outline">Оставить заявку</a>
     </div>
   </header>
 
-  <!-- ===== Hero ===== -->
+  <!-- Герой-блок -->
   <section class="hero">
-    <div class="container hero-inner">
-      <div class="hero-text">
-        <h1>Найди <span class="grad">лучшего мастера</span> в Канте</h1>
-        <p class="sub">Проверенные специалисты с рейтингом, отзывами и быстрым откликом.</p>
-        <div class="hero-actions">
-          <a class="btn" href="#categories">Выбрать услугу</a>
-          <a class="btn btn--light" href="#request">Оставить заявку</a>
-        </div>
-
-        <ul class="badges">
-          <li>⭐ 4.8 средний рейтинг</li>
-          <li>👥 2 000+ клиентов</li>
-          <li>🕒 заявки сегодня — отклик сегодня</li>
-        </ul>
-      </div>
-
-      <div class="hero-art" aria-hidden="true">
-        <!-- декоративные волны -->
-        <div class="blob b1"></div>
-        <div class="blob b2"></div>
-        <div class="blob b3"></div>
+    <div class="container">
+      <h1>Найди лучшего мастера в Канте</h1>
+      <p>Проверенные специалисты с рейтингом, отзывами и быстрым откликом.</p>
+      <div class="buttons">
+        <a href="#" class="btn">Выбрать услугу</a>
+        <a href="#" class="btn btn-light">Оставить заявку</a>
       </div>
     </div>
-    <div class="hero-curve" aria-hidden="true"></div>
   </section>
 
-  <!-- ===== Features ===== -->
+  <!-- Преимущества -->
   <section class="features container">
-    <article class="feature">
-      <div class="ico i-check"></div>
+    <div class="feature">
       <h3>Проверенные специалисты</h3>
-      <p>Профили проходят модерацию, у каждого — рейтинг и отзывы.</p>
-    </article>
-    <article class="feature">
-      <div class="ico i-bolt"></div>
+      <p>Профили проходят модерацию, есть отзывы и рейтинг.</p>
+    </div>
+    <div class="feature">
       <h3>Быстрый отклик</h3>
       <p>Большинство заявок обрабатываются в день обращения.</p>
-    </article>
-    <article class="feature">
-      <div class="ico i-tag"></div>
+    </div>
+    <div class="feature">
       <h3>Честные цены</h3>
       <p>Базовые прайсы указаны прямо в карточках категорий.</p>
-    </article>
-    <article class="feature">
-      <div class="ico i-chat"></div>
+    </div>
+    <div class="feature">
       <h3>Удобная связь</h3>
       <p>Звонок, WhatsApp или Telegram — как вам удобнее.</p>
-    </article>
+    </div>
   </section>
 
-  <!-- ===== Categories ===== -->
-  <section id="categories" class="container">
-    <div class="sec-head">
-      <h2>Категории услуг</h2>
-      <a class="link" href="/katalog/">Смотреть все →</a>
-    </div>
-
-    <div class="grid">
-      <a class="card" href="/katalog/renovation.html">
-        <div class="card-ico ci-paint"></div>
+  <!-- Категории -->
+  <section class="categories container">
+    <h2>Категории услуг</h2>
+    <div class="cards">
+      <div class="card">
+        <span class="icon">🧱</span>
         <h3>Ремонт и отделка</h3>
-        <p>Квартиры под ключ, отделка, дизайн</p>
-        <div class="meta"><span>от 1 500 сом</span><span>★ 4.8</span></div>
-      </a>
-
-      <a class="card" href="/katalog/plumbing.html">
-        <div class="card-ico ci-pipe"></div>
+        <p>Квартиры под ключ, отделка от 1500 сом</p>
+      </div>
+      <div class="card">
+        <span class="icon">🔧</span>
         <h3>Сантехника</h3>
         <p>Протечки, замена труб, установка</p>
-        <div class="meta"><span>от 600 сом</span><span>★ 4.7</span></div>
-      </a>
-
-      <a class="card" href="/katalog/electric.html">
-        <div class="card-ico ci-light"></div>
+      </div>
+      <div class="card">
+        <span class="icon">💡</span>
         <h3>Электрика</h3>
         <p>Проводка, автоматы, свет</p>
-        <div class="meta"><span>от 700 сом</span><span>★ 4.6</span></div>
-      </a>
-
-      <a class="card" href="/katalog/cleaning.html">
-        <div class="card-ico ci-broom"></div>
+      </div>
+      <div class="card">
+        <span class="icon">🚚</span>
+        <h3>Переезды и доставка</h3>
+        <p>Грузчики, газели, мебель</p>
+      </div>
+      <div class="card">
+        <span class="icon">🧹</span>
         <h3>Уборка</h3>
-        <p>Квартира
+        <p>Квартиры, офисы, клининг</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Футер -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 UslugiKant.kg — Все права защищены</p>
+    </div>
+  </footer>
+</body>
+</html>
