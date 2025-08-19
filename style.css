@@ -3,10 +3,10 @@
   --bg:#f7fafc;          /* фон */
   --card:#ffffff;        /* карточки */
   --border:#e5e7eb;      /* тонкие границы */
-  --text:#0f172a;        /* основной текст (почти чёрный) */
+  --text:#0f172a;        /* основной текст */
   --muted:#6b7280;       /* вторичный текст */
   --brand:#2563eb;       /* синий (primary) */
-  --brand-2:#10b981;     /* мятный (акцент) */
+  --brand-2:#10b981;     /* мятный (accent) */
   --shadow: 0 6px 20px rgba(2,6,23,.06);
 }
 
@@ -31,6 +31,8 @@ img{max-width:100%;display:block;border-radius:12px}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px}
 .brand{display:flex;align-items:center;gap:10px;font-weight:800}
 .logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--brand),#60a5fa)}
+.menu a{margin-left:18px;color:#334155}
+.menu a:hover{color:#111827}
 
 /* Хиро */
 .hero{background:
@@ -52,9 +54,9 @@ h2{margin:28px 0 12px;font-size:24px}
 .tile:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(2,6,23,.1)}
 .tile b{display:block;margin:6px 0 4px}
 .tile p{margin:0;color:var(--muted);font-size:14px}
-.ico{font-size:26px;display:inline-block;}
+.ico{font-size:26px;display:inline-block}
 
-/* Карточки и списки */
+/* Карточки/списки */
 .card{background:var(--card);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow)}
 .card .pad{padding:16px}
 .stars{color:#f59e0b;margin:6px 0}
@@ -76,3 +78,4 @@ h2{margin:28px 0 12px;font-size:24px}
   .hero h1{font-size:30px}
   .form{grid-template-columns:1fr}
 }
+
