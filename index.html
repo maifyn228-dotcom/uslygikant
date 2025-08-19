@@ -1,67 +1,104 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Ремонт и строительство в Канте — UslygiKant.kg</title>
-  <meta name="description" content="Бригады, отделка, прорабы. Ремонт квартир под ключ в Канте.">
-  <meta property="og:title" content="Ремонт и строительство в Канте — UslygiKant.kg">
-  <link rel="stylesheet" href="/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UslygiKant.kg — каталог мастеров в Канте</title>
+  <meta name="description" content="Найди мастера в Канте: ремонт, сантехника, электрика, уборка, переезды и др. Отзывы, рейтинг, быстрые заявки." />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<header class="hdr">
-  <div class="wrap nav">
-    <a class="brand" href="/"><span class="logo"></span><strong>UslygiKant.kg</strong></a>
-    <a class="btn btn-outline" href="/#lead">Оставить заявку</a>
-  </div>
-</header>
+  <!-- Шапка -->
+  <header class="hdr">
+    <div class="wrap nav">
+      <a class="brand" href="/"><span class="logo"></span><strong>UslygiKant.kg</strong></a>
+      <nav class="menu">
+        <a href="#cats">Категории</a>
+        <a href="#lead">Оставить заявку</a>
+      </nav>
+    </div>
+  </header>
 
-<main class="wrap">
-  <h1>Ремонт и строительство</h1>
-  <p class="muted">Бригады, отделка, сметы — подберём мастера под задачу.</p>
-
-  <div class="cards">
-    <article class="card">
-      <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=600&auto=format&fit=crop" alt="">
-      <div class="pad">
-        <b>Бригада «Кант-Строй»</b>
-        <div class="stars">★★★★★</div>
-        <p class="muted">Квартиры под ключ. Бесплатный выезд и смета.</p>
-        <a class="btn full" href="/#lead">Оставить заявку</a>
+  <!-- Хиро-блок -->
+  <section class="hero">
+    <div class="wrap">
+      <h1>Найди лучшего мастера в <span class="accent">Канте</span></h1>
+      <p class="muted">Проверенные специалисты с рейтингом, отзывами и быстрым откликом.</p>
+      <div class="cta">
+        <a class="btn" href="#cats">Выбрать услугу</a>
+        <a class="btn btn-outline" href="#lead">Оставить заявку</a>
       </div>
-    </article>
-
-    <article class="card">
-      <img src="https://images.unsplash.com/photo-1523419409543-41f1e9c3aa48?q=80&w=600&auto=format&fit=crop" alt="">
-      <div class="pad">
-        <b>Отделка и дизайн</b>
-        <div class="stars">★★★★☆</div>
-        <p class="muted">Штукатурка, покраска, гипсокартон.</p>
-        <a class="btn full" href="/#lead">Оставить заявку</a>
-      </div>
-    </article>
-  </div>
-
-  <section class="card" style="margin-top:14px">
-    <div class="pad">
-      <h2>Чем поможем</h2>
-      <ul class="muted">
-        <li>Косметический и капитальный ремонт</li>
-        <li>Плитка, стяжка, ламинат</li>
-        <li>ГКЛ, утепление, покраска</li>
-        <li>Смета и закупка материалов</li>
-      </ul>
-      <a class="btn" href="/#lead">Оформить заявку</a>
     </div>
   </section>
-</main>
 
-<footer class="ftr">
-  <div class="wrap spread">
-    <p>© 2025 UslygiKant.kg</p>
-    <p class="muted"><a href="/policy.html">Политика</a> • <a href="/terms.html">Соглашение</a></p>
-  </div>
-</footer>
+  <!-- Категории -->
+  <main class="wrap" id="cats">
+    <h2>Категории услуг</h2>
+    <div class="grid">
+      <a class="tile" href="katalog/renovation.html">
+        <span class="ico">🏗️</span>
+        <b>Ремонт и отделка</b>
+        <p>Квартиры под ключ, отделка, дизайн</p>
+      </a>
+      <a class="tile" href="katalog/plumbing.html">
+        <span class="ico">🚰</span>
+        <b>Сантехника</b>
+        <p>Протечки, замена труб, установка</p>
+      </a>
+      <a class="tile" href="katalog/electric.html">
+        <span class="ico">💡</span>
+        <b>Электрика</b>
+        <p>Проводка, автоматы, свет</p>
+      </a>
+      <!-- Приготовили места под следующие страницы — создадим их позже -->
+      <a class="tile" href="katalog/cleaning.html">
+        <span class="ico">🧹</span>
+        <b>Уборка</b>
+        <p>Квартиры, офисы, после ремонта</p>
+      </a>
+      <a class="tile" href="katalog/delivery.html">
+        <span class="ico">🚚</span>
+        <b>Переезды и доставка</b>
+        <p>Грузчики, газель, сборка мебели</p>
+      </a>
+      <a class="tile" href="katalog/appliances.html">
+        <span class="ico">🔧</span>
+        <b>Ремонт техники</b>
+        <p>Стиралки, холодильники</p>
+      </a>
+    </div>
+  </main>
+
+  <!-- Форма заявки -->
+  <section class="lead" id="lead">
+    <div class="wrap card">
+      <h2>Оставить заявку</h2>
+      <p class="muted">Это бесплатно. Мы подберём подходящего мастера и перезвоним.</p>
+      <form class="form" action="#" onsubmit="alert('Заявка отправлена!');return false;">
+        <input type="text" name="name" placeholder="Ваше имя" required />
+        <input type="tel" name="phone" placeholder="+996 7xx xxx xxx" required />
+        <select name="category" required>
+          <option value="">Выберите категорию</option>
+          <option>Ремонт и отделка</option>
+          <option>Сантехника</option>
+          <option>Электрика</option>
+          <option>Уборка</option>
+          <option>Переезды и доставка</option>
+          <option>Ремонт техники</option>
+        </select>
+        <textarea name="task" placeholder="Кратко опишите задачу" rows="3"></textarea>
+        <button class="btn" type="submit">Отправить</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Футер -->
+  <footer class="ftr">
+    <div class="wrap spread">
+      <p>© 2025 UslygiKant.kg</p>
+      <p class="muted"><a href="/policy.html">Политика</a> • <a href="/terms.html">Соглашение</a></p>
+    </div>
+  </footer>
 </body>
 </html>
 
