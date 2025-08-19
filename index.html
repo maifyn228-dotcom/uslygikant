@@ -3,160 +3,103 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>UslygiKant.kg — Каталог мастеров в Канте</title>
-  <meta name="description" content="Каталог проверенных мастеров Канта: ремонт, сантехника, электрика, уборка, доставка и др. Рейтинг, отзывы, быстрый отклик.">
-  <link rel="icon" href="/favicon.ico">
+  <title>UslygiKant.kg — найди мастера в Канте</title>
+  <meta name="description" content="Каталог мастеров Канта: ремонт, сантехника, электрика, уборка, доставка. Рейтинг, отзывы, быстрый отклик.">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- ШАПКА -->
-<header class="hdr">
-  <div class="wrap nav">
-    <a class="brand" href="/"><span class="logo"></span><b>UslygiKant.kg</b></a>
-    <nav class="menu">
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"> <span class="dot"></span> <b>UslygiKant.kg</b></a>
+    <nav class="nav">
       <a href="#cats">Категории</a>
-      <a href="#how">Как это работает</a>
-      <a href="#lead" class="btn btn--ghost">Оставить заявку</a>
+      <a href="#lead" class="btn ghost">Оставить заявку</a>
     </nav>
   </div>
 </header>
 
-<!-- ГЕРОЙ -->
 <section class="hero">
-  <div class="wrap hero__inner">
+  <div class="wrap hero__in">
     <div class="hero__text">
-      <h1>Найдём лучшего мастера <span class="accent">в Канте</span></h1>
-      <p>Проверенные специалисты с рейтингом и отзывами. Средний отклик — <b>15 минут</b>.</p>
-      <div class="cta">
+      <h1>Найди лучшего мастера в Канте</h1>
+      <p>Проверенные специалисты с рейтингом, отзывами и быстрым откликом.</p>
+      <div class="hero__cta">
         <a class="btn" href="#cats">Выбрать услугу</a>
-        <a class="btn btn--outline" href="#lead">Оставить заявку</a>
-      </div>
-      <ul class="bullets">
-        <li>⭐ Рейтинг и отзывы</li>
-        <li>🛡️ Модерация профилей</li>
-        <li>💬 Удобная связь</li>
-      </ul>
-    </div>
-
-    <!-- Сохраняем идею «больших картинок», но делаем красиво -->
-    <div class="hero__gallery" aria-label="Популярные категории">
-      <div class="hero-card">
-        <img src="/img/brick.svg" alt="Ремонт и отделка" loading="lazy">
-        <div class="hc-txt"><b>Ремонт и отделка</b><span>от 1500 сом</span></div>
-      </div>
-      <div class="hero-card">
-        <img src="/img/mop.svg" alt="Уборка" loading="lazy">
-        <div class="hc-txt"><b>Уборка</b><span>от 500 сом</span></div>
-      </div>
-      <div class="hero-card">
-        <img src="/img/bulb.svg" alt="Электрика" loading="lazy">
-        <div class="hc-txt"><b>Электрика</b><span>от 700 сом</span></div>
+        <a class="btn outline" href="#lead">Оставить заявку</a>
       </div>
     </div>
   </div>
-  <div class="wave" aria-hidden="true"></div>
+  <div class="hero__wave"></div>
 </section>
 
-<!-- ПРЕИМУЩЕСТВА -->
-<section id="usp" class="section">
-  <div class="wrap grid g4">
-    <div class="tile"><h3>Проверенные специалисты</h3><p>Профили проходят модерацию, есть рейтинг и отзывы.</p></div>
-    <div class="tile"><h3>Быстрый отклик</h3><p>Заявки попадают мастерам сразу, ответ обычно до 15 минут.</p></div>
-    <div class="tile"><h3>Прозрачные цены</h3><p>В карточках указаны базовые прайсы «от…».</p></div>
-    <div class="tile"><h3>Удобная связь</h3><p>Звонок, WhatsApp или Telegram — как удобно вам.</p></div>
+<section class="usp">
+  <div class="wrap grid g2">
+    <div class="tile">
+      <h3>Проверенные специалисты</h3>
+      <p>Профили проходят модерацию, у каждого — рейтинг и отзывы.</p>
+    </div>
+    <div class="tile">
+      <h3>Быстрый отклик</h3>
+      <p>Заявки обрабатываются в день обращения.</p>
+    </div>
   </div>
 </section>
 
-<!-- КАТЕГОРИИ (оставляем твои картинки, но в карточках) -->
-<section id="cats" class="section">
+<section id="cats" class="cats">
   <div class="wrap">
     <h2>Категории услуг</h2>
-    <p class="sub">Сохранили знакомые иконки, но сделали компактнее и стильнее.</p>
 
-    <div class="grid g3 cats">
-      <!-- Ремонт и отделка -->
+    <div class="grid g3">
       <a class="cat" href="/katalog/renovation.html">
-        <span class="cat__pic"><img src="/img/brick.svg" alt="Ремонт и отделка" loading="lazy"></span>
-        <span class="cat__txt">
-          <b>Ремонт и отделка</b>
-          <small>Квартиры под ключ, отделка, дизайн</small>
-          <em>от 1500 cом · 12 мастеров · ★ 4.8</em>
-        </span>
+        <span class="ico"><img src="/img/brick.svg" alt="Ремонт и отделка"></span>
+        <b>Ремонт и отделка</b>
+        <small>Квартиры под ключ, отделка, дизайн</small>
+        <em>от 1500 сом · 12 мастеров · ★ 4.8</em>
       </a>
 
-      <!-- Сантехника -->
       <a class="cat" href="/katalog/plumbing.html">
-        <span class="cat__pic"><img src="/img/pipe.svg" alt="Сантехника" loading="lazy"></span>
-        <span class="cat__txt">
-          <b>Сантехника</b>
-          <small>Протечки, замена труб, установка</small>
-          <em>от 600 cом · 9 мастеров · ★ 4.7</em>
-        </span>
+        <span class="ico"><img src="/img/pipe.svg" alt="Сантехника"></span>
+        <b>Сантехника</b>
+        <small>Протечки, замена труб, установка</small>
+        <em>от 600 сом · 9 мастеров · ★ 4.7</em>
       </a>
 
-      <!-- Электрика -->
       <a class="cat" href="/katalog/electric.html">
-        <span class="cat__pic"><img src="/img/bulb.svg" alt="Электрика" loading="lazy"></span>
-        <span class="cat__txt">
-          <b>Электрика</b>
-          <small>Проводка, автоматы, свет</small>
-          <em>от 700 cом · 8 мастеров · ★ 4.8</em>
-        </span>
+        <span class="ico"><img src="/img/bulb.svg" alt="Электрика"></span>
+        <b>Электрика</b>
+        <small>Проводка, автоматы, свет</small>
+        <em>от 700 сом · 8 мастеров · ★ 4.8</em>
       </a>
 
-      <!-- Уборка -->
       <a class="cat" href="/katalog/cleaning.html">
-        <span class="cat__pic"><img src="/img/mop.svg" alt="Уборка" loading="lazy"></span>
-        <span class="cat__txt">
-          <b>Уборка</b>
-          <small>Квартиры, офисы, после ремонта</small>
-          <em>от 500 cом · 7 бригад · ★ 4.6</em>
-        </span>
+        <span class="ico"><img src="/img/mop.svg" alt="Уборка"></span>
+        <b>Уборка</b>
+        <small>Квартиры, офисы, после ремонта</small>
+        <em>от 500 сом · 7 бригад · ★ 4.6</em>
       </a>
 
-      <!-- Переезды и доставка -->
       <a class="cat" href="/katalog/delivery.html">
-        <span class="cat__pic"><img src="/img/truck.svg" alt="Переезды и доставка" loading="lazy"></span>
-        <span class="cat__txt">
-          <b>Переезды и доставка</b>
-          <small>Грузчики, газель, сборка мебели</small>
-          <em>от 800 cом · 6 экипажей · ★ 4.7</em>
-        </span>
+        <span class="ico"><img src="/img/truck.svg" alt="Переезды и доставка"></span>
+        <b>Переезды и доставка</b>
+        <small>Грузчики, газель, сборка мебели</small>
+        <em>от 800 сом · 6 экипажей · ★ 4.7</em>
       </a>
 
-      <!-- Ремонт техники -->
       <a class="cat" href="/katalog/appliances.html">
-        <span class="cat__pic"><img src="/img/wrench.svg" alt="Ремонт техники" loading="lazy"></span>
-        <span class="cat__txt">
-          <b>Ремонт техники</b>
-          <small>Стиралки, холодильники</small>
-          <em>от 700 cом · 5 мастеров · ★ 4.6</em>
-        </span>
+        <span class="ico"><img src="/img/wrench.svg" alt="Ремонт техники"></span>
+        <b>Ремонт техники</b>
+        <small>Стиралки, холодильники</small>
+        <em>от 700 сом · 5 мастеров · ★ 4.6</em>
       </a>
     </div>
   </div>
 </section>
 
-<!-- КАК РАБОТАЕТ -->
-<section id="how" class="section">
-  <div class="wrap">
-    <h2>Как это работает</h2>
-    <div class="grid g4">
-      <div class="tile"><h3>1. Оставляете заявку</h3><p>Имя и краткое описание задачи — бесплатно.</p></div>
-      <div class="tile"><h3>2. Подбор мастера</h3><p>Получаете 1–3 варианта с рейтингом и ценой.</p></div>
-      <div class="tile"><h3>3. Согласование</h3><p>Мастер уточнит детали в чате или по телефону.</p></div>
-      <div class="tile"><h3>4. Работа и отзыв</h3><p>Оплата по факту, затем оставьте отзыв.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ФОРМА -->
-<section id="lead" class="section lead">
+<section id="lead" class="lead">
   <div class="wrap">
     <div class="formcard">
       <h2>Оставить заявку</h2>
-      <p class="sub">Мы быстро подберём мастера рядом с вами.</p>
       <form class="form" action="https://formspree.io/f/xeoqzadb" method="POST">
         <input name="name" type="text" placeholder="Ваше имя" required>
         <input name="phone" type="tel" placeholder="+996 7xx xxx xxx" required>
@@ -176,18 +119,16 @@
   </div>
 </section>
 
-<!-- ПОДВАЛ -->
-<footer class="ftr">
+<footer class="foot">
   <div class="wrap spread">
     <p>© <span id="y"></span> UslygiKant.kg</p>
     <p class="muted"><a href="/policy.html">Политика</a> • <a href="/terms.html">Соглашение</a></p>
   </div>
 </footer>
 
-<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>
 </html>
-
 
 
 
