@@ -1,33 +1,154 @@
-/* ==== FIX: герой, волна и кнопки не обрезаются ==== */
-
-/* больше места внизу и не режем содержимое */
-.hero{
-  padding-bottom: 96px !important;   /* было ~60px */
-  overflow: visible !important;      /* вместо hidden */
-  position: relative;
+/* === Глобальные переменные === */
+:root {
+  --bg: #f8fafc;
+  --text: #1f2937;
+  --primary: #3b82f6;
+  --secondary: #6366f1;
+  --card-bg: #ffffff;
+  --shadow: rgba(0, 0, 0, 0.08);
 }
 
-/* волна ниже контента */
-.hero::after{
-  height: 70px !important;           /* чуть ниже волна */
-  z-index: 1;
+/* === Сброс === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
 }
 
-/* кнопки поверх волны и с нормальными отступами */
-.cta{
-  position: relative;
-  z-index: 2;                        /* выше волны */
-  gap: 16px;
-  margin-top: 20px;
+body {
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
 }
 
-.btn{
-  padding: 10px 18px;                /* компактнее */
-  line-height: 1.2;
+/* === Шапка === */
+header {
+  background: var(--card-bg);
+  box-shadow: 0 2px 6px var(--shadow);
+  padding: 1rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+header nav a {
+  margin-left: 1.2rem;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+header nav a:hover {
+  color: var(--primary);
+}
+
+/* === Hero блок === */
+.hero {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #fff;
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.hero .buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.hero .btn {
+  background: #fff;
+  color: var(--primary);
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.hero .btn:hover {
+  background: var(--secondary);
+  color: #fff;
+}
+
+/* === Инфо-блоки === */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem auto;
+  max-width: 1100px;
+  padding: 0 1rem;
+}
+
+.feature {
+  background: var(--card-bg);
+  padding: 1.5rem;
   border-radius: 12px;
+  box-shadow: 0 4px 10px var(--shadow);
+  transition: 0.3s;
+  text-align: center;
 }
 
-/* отодвинем следующий блок от волны, чтобы не слипалось */
-section, .wrap > .card, .grid{
-  scroll-margin-top: 90px;           /* для якорей */
+.feature:hover {
+  transform: translateY(-5px);
+}
+
+/* === Категории === */
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 3rem auto;
+  max-width: 1100px;
+  padding: 0 1rem;
+}
+
+.category-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px var(--shadow);
+  transition: 0.3s;
+  text-align: center;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+.category-card h3 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+/* === Футер === */
+footer {
+  background: var(--card-bg);
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-top: 2rem;
+  border-top: 1px solid #e5e7eb;
 }
