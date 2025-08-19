@@ -1,122 +1,242 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>UslygiKant.kg — каталог мастеров в Канте</title>
-  <meta name="description" content="Найди мастера в Канте: ремонт, сантехника, электрика, уборка, переезды и др. Отзывы, рейтинг, быстрые заявки." />
-  <!-- Шрифт (Inter) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>UslygiKant.kg — Найди лучшего мастера в Канте</title>
+  <meta name="description" content="Каталог проверенных мастеров и сервисов в Канте: ремонт, сантехника, электрика, уборка, доставка и другое. Отзывы, рейтинг, быстрый отклик.">
+  <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* добавка: плавная прокрутка, бейджи и мелочи */
+    html{scroll-behavior:smooth}
+    .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .badge{background:#eef2ff;color:#1e293b;border:1px solid #e6e8ef;border-radius:999px;padding:6px 10px;font-size:13px}
+    .section{padding:26px 0}
+    .sub{color:var(--muted);margin-top:2px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .review{display:flex;gap:12px}
+    .avatar{width:44px;height:44px;border-radius:50%;background:#e5e7eb}
+    .faq dt{font-weight:800;margin:12px 0 6px}
+    .faq dd{margin:0 0 6px;color:var(--muted)}
+    .floating-cta{position:fixed;left:0;right:0;bottom:14px;display:none;justify-content:center;z-index:30}
+    .floating-cta .btn{box-shadow:0 16px 36px rgba(37,99,235,.35)}
+    @media (max-width:860px){ .row{grid-template-columns:1fr} .floating-cta{display:flex} }
+  </style>
 </head>
 <body>
-  <!-- Шапка -->
+
+  <!-- ШАПКА -->
   <header class="hdr">
     <div class="wrap nav">
-      <a class="brand" href="/"><span class="logo"></span><strong>UslygiKant.kg</strong></a>
+      <div class="brand">
+        <div class="logo"></div>
+        UslygiKant.kg
+      </div>
       <nav class="menu">
         <a href="#cats">Категории</a>
         <a href="#how">Как это работает</a>
-        <a href="#lead">Оставить заявку</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#lead" class="btn btn-outline">Оставить заявку</a>
       </nav>
     </div>
   </header>
 
-  <!-- Хиро -->
+  <!-- ХЕРО -->
   <section class="hero">
     <div class="wrap">
-      <h1>Найди лучшего мастера в <span class="accent">Канте</span></h1>
-      <p class="muted">Проверенные специалисты с рейтингом, отзывами и быстрым откликом.</p>
+      <h1>Найди лучшего мастера в&nbsp;Канте</h1>
+      <p>Проверенные специалисты с рейтингом, отзывами и быстрым откликом.</p>
       <div class="cta">
         <a class="btn" href="#cats">Выбрать услугу</a>
         <a class="btn btn-outline" href="#lead">Оставить заявку</a>
       </div>
-    </div>
-  </section>
-
-  <!-- Бейджи доверия -->
-  <section class="wrap" style="margin-top:8px">
-    <div class="grid">
-      <div class="card"><div class="pad"><b>2 000+ клиентов</b><p class="muted">уже нашли мастеров через нас</p></div></div>
-      <div class="card"><div class="pad"><b>Проверенные специалисты</b><p class="muted">с рейтингом и отзывами</p></div></div>
-      <div class="card"><div class="pad"><b>Быстрый отклик</b><p class="muted">заявки обрабатываются в день обращения</p></div></div>
-    </div>
-  </section>
-
-  <!-- Категории -->
-  <main class="wrap" id="cats">
-    <h2>Категории услуг</h2>
-    <div class="grid">
-      <a class="tile" href="katalog/renovation.html">
-        <span class="ico">🏗️</span><b>Ремонт и отделка</b>
-        <p>Квартиры под ключ, отделка, дизайн</p>
-      </a>
-      <a class="tile" href="katalog/plumbing.html">
-        <span class="ico">🚰</span><b>Сантехника</b>
-        <p>Протечки, замена труб, установка</p>
-      </a>
-      <a class="tile" href="katalog/electric.html">
-        <span class="ico">💡</span><b>Электрика</b>
-        <p>Проводка, автоматы, свет</p>
-      </a>
-      <a class="tile" href="katalog/cleaning.html">
-        <span class="ico">🧹</span><b>Уборка</b>
-        <p>Квартиры, офисы, после ремонта</p>
-      </a>
-      <a class="tile" href="katalog/delivery.html">
-        <span class="ico">🚚</span><b>Переезды и доставка</b>
-        <p>Грузчики, машина, сборка мебели</p>
-      </a>
-      <a class="tile" href="katalog/appliances.html">
-        <span class="ico">🔧</span><b>Ремонт техники</b>
-        <p>Стиралки, холодильники, плиты</p>
-      </a>
-    </div>
-  </main>
-
-  <!-- Как это работает -->
-  <section class="wrap" id="how">
-    <h2>Как это работает</h2>
-    <div class="grid">
-      <div class="card"><div class="pad"><b>1. Оставляете задачу</b><p class="muted">кратко опишите, что нужно сделать</p></div></div>
-      <div class="card"><div class="pad"><b>2. Подбираем мастера</b><p class="muted">учитываем рейтинг, опыт и цену</p></div></div>
-      <div class="card"><div class="pad"><b>3. Выбираете и старт</b><p class="muted">согласуем время и начинаем работу</p></div></div>
-    </div>
-  </section>
-
-  <!-- Форма заявки -->
-  <section class="lead" id="lead">
-    <div class="wrap card">
-      <div class="pad">
-        <h2>Оставить заявку</h2>
-        <p class="muted">Это бесплатно. Мы подберём подходящего мастера и перезвоним.</p>
-        <form class="form" action="#" onsubmit="alert('Заявка отправлена!');return false;">
-          <input type="text" name="name" placeholder="Ваше имя" required />
-          <input type="tel" name="phone" placeholder="+996 7xx xxx xxx" required />
-          <select name="category" required>
-            <option value="">Выберите категорию</option>
-            <option>Ремонт и отделка</option>
-            <option>Сантехника</option>
-            <option>Электрика</option>
-            <option>Уборка</option>
-            <option>Переезды и доставка</option>
-            <option>Ремонт техники</option>
-          </select>
-          <textarea name="task" placeholder="Кратко опишите задачу" rows="3"></textarea>
-          <button class="btn" type="submit">Отправить</button>
-        </form>
+      <div class="badges">
+        <span class="badge">⭐ 4.8/5 рейтинг</span>
+        <span class="badge">⚡ Среднее время ответа — 15 мин</span>
+        <span class="badge">🛡️ Проверенные профили</span>
       </div>
     </div>
   </section>
 
-  <!-- Футер -->
+  <!-- ПРЕИМУЩЕСТВА -->
+  <section class="section">
+    <div class="wrap grid">
+      <div class="card"><div class="pad">
+        <h3>Проверенные специалисты</h3>
+        <p class="sub">Профили проходят модерацию, есть отзывы и рейтинг.</p>
+      </div></div>
+      <div class="card"><div class="pad">
+        <h3>Быстрый отклик</h3>
+        <p class="sub">Заявки обрабатываются в день обращения.</p>
+      </div></div>
+      <div class="card"><div class="pad">
+        <h3>Честные цены</h3>
+        <p class="sub">Базовые прайсы указаны в карточках категорий.</p>
+      </div></div>
+      <div class="card"><div class="pad">
+        <h3>Удобная связь</h3>
+        <p class="sub">Звонок, WhatsApp или Telegram — как вам удобнее.</p>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- КАТЕГОРИИ -->
+  <section class="section" id="cats">
+    <div class="wrap">
+      <h2>Категории услуг</h2>
+      <p class="sub">Выберите направление — внутри будут типовые задачи и стартовые цены.</p>
+      <div class="grid" style="margin-top:10px">
+        <a class="tile" href="/katalog/renovation.html">
+          <span class="ico">🧱</span>
+          <b>Ремонт и отделка</b>
+          <p>Квартиры под ключ, отделка, дизайн</p>
+        </a>
+        <a class="tile" href="/katalog/plumbing.html">
+          <span class="ico">🚿</span>
+          <b>Сантехника</b>
+          <p>Протечки, замена труб, установка</p>
+        </a>
+        <a class="tile" href="/katalog/electric.html">
+          <span class="ico">💡</span>
+          <b>Электрика</b>
+          <p>Проводка, автоматы, свет</p>
+        </a>
+        <a class="tile" href="/katalog/cleaning.html">
+          <span class="ico">🧹</span>
+          <b>Уборка</b>
+          <p>Квартиры, офисы, после ремонта</p>
+        </a>
+        <a class="tile" href="/katalog/delivery.html">
+          <span class="ico">🚚</span>
+          <b>Переезды и доставка</b>
+          <p>Грузчики, газель, сборка мебели</p>
+        </a>
+        <a class="tile" href="/katalog/appliances.html">
+          <span class="ico">🛠️</span>
+          <b>Ремонт техники</b>
+          <p>Стиралки, холодильники</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- КАК ЭТО РАБОТАЕТ -->
+  <section class="section" id="how">
+    <div class="wrap">
+      <h2>Как это работает</h2>
+      <div class="row">
+        <div class="card"><div class="pad">
+          <h3>1. Вы оставляете заявку</h3>
+          <p class="sub">Имя, телефон и кратко опишите задачу — это бесплатно.</p>
+        </div></div>
+        <div class="card"><div class="pad">
+          <h3>2. Мы подбираем мастера</h3>
+          <p class="sub">Отправим варианты с рейтингом и ценой «от».</p>
+        </div></div>
+        <div class="card"><div class="pad">
+          <h3>3. Согласовываем цену</h3>
+          <p class="sub">Мастер связывается с вами, уточняет детали.</p>
+        </div></div>
+        <div class="card"><div class="pad">
+          <h3>4. Работа и отзыв</h3>
+          <p class="sub">Вы оплачиваете работу и оставляете отзыв в профиле.</p>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ОТЗЫВЫ -->
+  <section class="section" id="reviews">
+    <div class="wrap">
+      <h2>Отзывы клиентов</h2>
+      <div class="grid">
+        <div class="card"><div class="pad review">
+          <div class="avatar"></div>
+          <div>
+            <b>Айжан</b> <div class="stars">★★★★★</div>
+            <div class="sub">Сантехник приехал через час, заменил смеситель. Всё аккуратно, спасибо!</div>
+          </div>
+        </div></div>
+        <div class="card"><div class="pad review">
+          <div class="avatar"></div>
+          <div>
+            <b>Дастан</b> <div class="stars">★★★★★</div>
+            <div class="sub">Нужно было провести свет на кухню. Быстро и по цене как договаривались.</div>
+          </div>
+        </div></div>
+        <div class="card"><div class="pad review">
+          <div class="avatar"></div>
+          <div>
+            <b>Гульзат</b> <div class="stars">★★★★☆</div>
+            <div class="sub">Заказывала уборку после ремонта — ребята молодцы, рекомендую.</div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="wrap">
+      <h2>Частые вопросы</h2>
+      <dl class="faq">
+        <dt>Сколько стоит вызов мастера?</dt>
+        <dd>Вызов бесплатный. Оплата — по факту работ. Базовые цены указаны в карточках категорий.</dd>
+        <dt>Как быстро приедет мастер?</dt>
+        <dd>Среднее время отклика — 15–60 минут в рабочее время.</dd>
+        <dt>Как оставить отзыв?</dt>
+        <dd>После завершения работ пришлём ссылку на профиль мастера, там можно поставить оценку и комментарий.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ФОРМА ЗАЯВКИ -->
+  <section class="section lead" id="lead">
+    <div class="wrap">
+      <div class="card">
+        <div class="pad">
+          <h2>Оставить заявку</h2>
+          <p class="sub">Мы свяжемся с вами и подберём лучшего мастера рядом.</p>
+          <form class="form" action="https://formspree.io/f/xeoqzadb" method="POST">
+            <input name="name" type="text" placeholder="Ваше имя" required>
+            <input name="phone" type="tel" placeholder="+996 7xx xxx xxx" required>
+            <select name="category" required>
+              <option value="">Категория услуги</option>
+              <option>Ремонт и отделка</option>
+              <option>Сантехника</option>
+              <option>Электрика</option>
+              <option>Уборка</option>
+              <option>Переезды и доставка</option>
+              <option>Ремонт техники</option>
+            </select>
+            <textarea name="task" placeholder="Кратко опишите задачу"></textarea>
+            <button class="btn" type="submit">Отправить заявку</button>
+          </form>
+          <p class="sub">Нажимая «Отправить», вы соглашаетесь с условиями сервиса.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ФУТЕР -->
   <footer class="ftr">
     <div class="wrap spread">
-      <p>© 2025 UslygiKant.kg</p>
-      <p class="muted"><a href="/policy.html">Политика</a> • <a href="/terms.html">Соглашение</a></p>
+      <div>© <span id="y"></span> UslygiKant.kg</div>
+      <div class="badges">
+        <span class="badge">RU/KG</span>
+        <span class="badge">Контакты: +996&nbsp;755&nbsp;18-88-27</span>
+      </div>
     </div>
   </footer>
+
+  <!-- Плавающая CTA для мобилок -->
+  <div class="floating-cta">
+    <a href="#lead" class="btn" style="border-radius:18px">Оставить заявку</a>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
