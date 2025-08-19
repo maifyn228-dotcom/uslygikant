@@ -1,75 +1,239 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>UslygiKant.kg — найди мастера в Канте</title>
-<meta name="description" content="Каталог мастеров и сервисов в Канте: рейтинг, отзывы, честные цены и быстрый отклик.">
-<style>
-/* ====== БАЗА ====== */
-:root{
-  --bg:#f7f9fb; --card:#ffffff; --text:#0f172a; --muted:#64748b;
-  --primary:#0ea5e9; --primary-2:#0284c7; --ok:#22c55e; --warn:#f59e0b;
-  --border:#e5e7eb; --shadow:0 10px 30px rgba(2,132,199,.12)
-}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{
-  font:16px/1.55 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica Neue,sans-serif;
-  color:var(--text); background:var(--bg)
-}
-a{color:var(--primary-2); text-decoration:none}
-a:hover{text-decoration:underline}
-.container{max-width:1100px;margin:0 auto;padding:0 18px}
-.section{padding:48px 0}
-h1,h2,h3{margin:0 0 14px}
-h1{font-size:clamp(28px,4.6vw,40px);line-height:1.15;letter-spacing:.2px}
-h2{font-size:clamp(22px,3.5vw,28px)}
-p{margin:0 0 12px;color:var(--muted)}
-.small{font-size:13px;color:var(--muted)}
-.badge{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:999px;background:#e0f2fe;color:#075985;font-weight:600}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid transparent;font-weight:700}
-.btn--fill{background:var(--primary);color:white;box-shadow:0 8px 26px rgba(14,165,233,.25)}
-.btn--fill:hover{filter:brightness(.98);transform:translateY(-1px)}
-.btn--ghost{background:white;border-color:var(--border);color:var(--text)}
-.btn--ghost:hover{border-color:#cbd5e1;transform:translateY(-1px)}
-.grid{display:grid;gap:18px}
-.card{
-  background:var(--card);border:1px solid var(--border);border-radius:16px;
-  box-shadow:var(--shadow);padding:18px
-}
-/* ====== ХЕДЕР ====== */
-.header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.7);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid #eef2f7}
-.brand{display:flex;align-items:center;gap:10px;font-weight:900}
-.brand .dot{width:12px;height:12px;border-radius:50%;background:var(--primary)}
-.nav{display:flex;gap:18px;align-items:center}
-.nav a{color:var(--muted)}
-.nav a:hover{color:var(--primary-2)}
-/* ====== HERO ====== */
-.hero{
-  background:linear-gradient(180deg,#0ea5e9 0%,#38bdf8 100%);
-  color:white;padding:56px 0 26px;position:relative;overflow:hidden
-}
-.hero:after{
-  content:""; position:absolute; left:0; right:0; bottom:-1px; height:24px;
-  background:radial-gradient(60% 24px at 50% 0,#0ea5e9 0,transparent 70%);
-  opacity:.35
-}
-.hero .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-.hero p{color:#e6f6ff}
-/* ====== ИКОНКИ (SVG) ====== */
-.icon{
-  width:52px;height:52px;display:inline-flex;align-items:center;justify-content:center;
-  border-radius:14px;color:white;box-shadow:0 10px 22px rgba(2,132,199,.18)
-}
-.i-blue{background:#3b82f6}
-.i-green{background:#22c55e}
-.i-amber{background:#f59e0b}
-.i-rose{background:#f43f5e}
-.i-slate{background:#475569}
-/* ====== ПЛЮСЫ ====== */
-.features{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.feature{display:flex;gap:12px;align-items:flex-start}
-.feature h3{margin:2px 0 6px;font-size:18px}
-/* ====== КАТЕГОРИИ ====== */
-.categories{grid-template-columns:
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>UslugiKant.kg — найди мастера в Канте</title>
+  <meta name="description" content="Каталог услуг и мастеров в Канте: ремонт, сантехника, электрика, уборка, переезды, ремонт техники." />
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --text:#101828;
+      --muted:#667085;
+      --brand:#0ea5e9;      /* голубой */
+      --brand-2:#22c55e;    /* зелёный */
+      --accent:#f59e0b;     /* янтарный */
+      --danger:#ef4444;     /* красный */
+      --radius:18px;
+      --shadow:0 10px 30px rgba(2,6,23,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1200px;margin:0 auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:800}
+    .logo-badge{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--brand),#38bdf8);display:grid;place-items:center;color:#fff;font-weight:700}
+    nav a{color:var(--muted);margin-left:18px}
+    nav a:hover{color:var(--text)}
+    .hero{position:relative;background:linear-gradient(180deg,#e0f2fe, #fff0);border-radius:24px;padding:40px 28px;margin:12px 0 28px;overflow:hidden}
+    .hero h1{margin:0 0 10px;font-size:34px;line-height:1.15;letter-spacing:.2px}
+    .hero p{margin:0 0 20px;color:var(--muted)}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{padding:12px 18px;border-radius:999px;border:1px solid #0000;background:#fff;font-weight:600;box-shadow:var(--shadow)}
+    .btn--primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+    .btn--ghost{background:#fff}
+    .hero-wave{position:absolute;inset:auto -10% -26% -10%;height:140px;background:
+       radial-gradient(120px 60px at 15% 60%, #ffffff 45%, #0000 55%),
+       radial-gradient(120px 60px at 40% 45%, #ffffff 45%, #0000 55%),
+       radial-gradient(120px 60px at 65% 60%, #ffffff 45%, #0000 55%),
+       radial-gradient(120px 60px at 90% 45%, #ffffff 45%, #0000 55%);
+      opacity:.7}
+    .grid{display:grid;gap:18px}
+    .grid.cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    @media (max-width:1100px){.grid.cols-4{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:700px){
+      .grid.cols-4,.grid.cols-3{grid-template-columns:1fr}
+      .hero{padding:28px 18px}
+      .hero h1{font-size:28px}
+    }
+    .feature{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);display:flex;gap:14px;align-items:flex-start}
+    .feat-ico{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;color:#fff}
+    .ico-blue{background:linear-gradient(135deg,var(--brand),#38bdf8)}
+    .ico-green{background:linear-gradient(135deg,var(--brand-2),#86efac)}
+    .ico-amber{background:linear-gradient(135deg,var(--accent),#fbbf24)}
+    .ico-red{background:linear-gradient(135deg,var(--danger),#f87171)}
+    .feature h3{margin:2px 0 4px;font-size:18px}
+    .feature p{margin:0;color:var(--muted);font-size:14px}
+    .kats .card{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);display:flex;gap:14px;align-items:flex-start;transition:transform .2s ease, box-shadow .2s ease}
+    .kats .card:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(2,6,23,.12)}
+    .k-title{margin:0 0 6px;font-weight:700}
+    .k-sub{margin:0;color:var(--muted);font-size:14px}
+    .k-meta{margin-top:8px;font-size:13px;color:var(--muted)}
+    .steps{background:#fff;border-radius:20px;padding:18px;box-shadow:var(--shadow)}
+    .steps .step{display:flex;gap:12px;align-items:flex-start}
+    .badge{width:28px;height:28px;border-radius:9px;background:#e2e8f0;display:grid;place-items:center;font-weight:700;color:#0f172a}
+    footer{padding:36px 0;color:var(--muted);text-align:center}
+    /* компактная ссылка WhatsApp */
+    .wa{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:#22c55e;color:#fff;font-weight:700}
+    .wa svg{width:18px;height:18px}
+    /* SVG в карточках */
+    .k-ico{width:48px;height:48px;flex:0 0 48px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div class="logo-badge">U</div>
+        <div>UslugiKant.kg</div>
+      </div>
+      <nav>
+        <a href="#kats">Категории</a>
+        <a href="#how">Как это работает</a>
+        <a href="#apply">Оставить заявку</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>Найди лучшего мастера в Канте</h1>
+      <p>Проверенные специалисты с&nbsp;рейтингом, отзывами и&nbsp;быстрым откликом.</p>
+      <div class="cta">
+        <a class="btn btn--primary" href="#kats">Выбрать услугу</a>
+        <a class="btn btn--ghost" href="#apply">Оставить заявку</a>
+      </div>
+      <div class="hero-wave"></div>
+    </section>
+
+    <!-- преимущества -->
+    <section class="grid cols-4" style="margin-bottom:24px">
+      <div class="feature">
+        <div class="feat-ico ico-blue">
+          <!-- shield check -->
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <div><h3>Проверенные специалисты</h3><p>Профили проходят модерацию, у каждого — рейтинг и отзывы.</p></div>
+      </div>
+      <div class="feature">
+        <div class="feat-ico ico-green">
+          <!-- clock -->
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        </div>
+        <div><h3>Быстрый отклик</h3><p>Большинство заявок обрабатываются в день обращения.</p></div>
+      </div>
+      <div class="feature">
+        <div class="feat-ico ico-amber">
+          <!-- tags -->
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 7l-8-4-8 4 8 4 8-4z"/><path d="M5 8v6l8 4 8-4V8"/></svg>
+        </div>
+        <div><h3>Честные цены</h3><p>Базовые прайсы указаны в карточках категорий.</p></div>
+      </div>
+      <div class="feature">
+        <div class="feat-ico ico-red">
+          <!-- phone -->
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92V21a1 1 0 0 1-1.1 1 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 11.73 19.79 19.79 0 0 1 0 3.1 1 1 0 0 1 1 2h4.09A1 1 0 0 1 6.1 2.72l1.3 3.12a1 1 0 0 1-.23 1.09L5.91 8.2a16 16 0 0 0 6 6l1.27-1.26a1 1 0 0 1 1.09-.23l3.12 1.3a1 1 0 0 1 .72 1.01Z"/></svg>
+        </div>
+        <div><h3>Удобная связь</h3><p>Звонок, WhatsApp или Telegram — как удобно вам.</p></div>
+      </div>
+    </section>
+
+    <!-- Категории -->
+    <h2 id="kats" style="margin:6px 0 12px">Категории услуг</h2>
+    <section class="grid cols-3 kats">
+      <!-- Ремонт и отделка -->
+      <a class="card" href="/katalog/renovation.html">
+        <svg class="k-ico" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="1.8">
+          <rect x="3" y="3" width="8" height="8" rx="2"/><path d="M7 7l14 14"/><path d="M15 11l-4 4"/>
+        </svg>
+        <div>
+          <h3 class="k-title">Ремонт и отделка</h3>
+          <p class="k-sub">Квартиры под ключ, отделка, дизайн</p>
+          <div class="k-meta">от 1500 сом • ★ 4.8</div>
+        </div>
+      </a>
+      <!-- Сантехника -->
+      <a class="card" href="/katalog/plumbing.html">
+        <svg class="k-ico" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.8">
+          <path d="M3 10h10v4H3z"/><path d="M13 12h4a2 2 0 0 0 0-4h-2"/><circle cx="7" cy="12" r="1.5"/>
+        </svg>
+        <div>
+          <h3 class="k-title">Сантехника</h3>
+          <p class="k-sub">Протечки, замена труб, установка</p>
+          <div class="k-meta">от 600 сом • ★ 4.7</div>
+        </div>
+      </a>
+      <!-- Электрика -->
+      <a class="card" href="/katalog/electric.html">
+        <svg class="k-ico" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8">
+          <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z" />
+        </svg>
+        <div>
+          <h3 class="k-title">Электрика</h3>
+          <p class="k-sub">Проводка, автоматы, свет</p>
+          <div class="k-meta">от 700 сом • ★ 4.6</div>
+        </div>
+      </a>
+      <!-- Уборка -->
+      <a class="card" href="/katalog/cleaning.html">
+        <svg class="k-ico" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="1.8">
+          <path d="M3 18h18"/><path d="M5 18V8a7 7 0 0 1 14 0v10"/><path d="M8 22h8"/>
+        </svg>
+        <div>
+          <h3 class="k-title">Уборка</h3>
+          <p class="k-sub">Квартиры, офисы, после ремонта</p>
+          <div class="k-meta">от 500 сом • ★ 4.6</div>
+        </div>
+      </a>
+      <!-- Переезды -->
+      <a class="card" href="/katalog/delivery.html">
+        <svg class="k-ico" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" stroke-width="1.8">
+          <rect x="1.5" y="8" width="13" height="8" rx="2"/><path d="M14.5 12h3l3 3v1h-6z"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/>
+        </svg>
+        <div>
+          <h3 class="k-title">Переезды и доставка</h3>
+          <p class="k-sub">Грузчики, газель, сборка мебели</p>
+          <div class="k-meta">от 800 сом • ★ 4.7</div>
+        </div>
+      </a>
+      <!-- Ремонт техники -->
+      <a class="card" href="/katalog/appliance.html">
+        <svg class="k-ico" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.8">
+          <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>
+        </svg>
+        <div>
+          <h3 class="k-title">Ремонт техники</h3>
+          <p class="k-sub">Стиральные, холодильники</p>
+          <div class="k-meta">от 700 сом • ★ 4.6</div>
+        </div>
+      </a>
+    </section>
+
+    <!-- Как это работает -->
+    <h2 id="how" style="margin:26px 0 12px">Как это работает</h2>
+    <section class="steps grid cols-3">
+      <div class="step">
+        <div class="badge">1</div>
+        <div><strong>Выберите категорию</strong><br/>Или оставьте заявку — подберём мастера рядом с вами.</div>
+      </div>
+      <div class="step">
+        <div class="badge">2</div>
+        <div><strong>Опишите задачу</strong><br/>Сроки и бюджет, связь как удобно.</div>
+      </div>
+      <div class="step">
+        <div class="badge">3</div>
+        <div><strong>Получите отклик</strong><br/>Сравните рейтинг и выберите лучшего мастера.</div>
+      </div>
+    </section>
+
+    <!-- Заявка -->
+    <h2 id="apply" style="margin:26px 0 10px">Оставить заявку</h2>
+    <div class="feature" style="align-items:center">
+      <div class="feat-ico ico-green">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92V21a1 1 0 0 1-1.1 1 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 11.73 19.79 19.79 0 0 1 0 3.1 1 1 0 0 1 1 2h4.09A1 1 0 0 1 6.1 2.72l1.3 3.12a1 1 0 0 1-.23 1.09L5.91 8.2a16 16 0 0 0 6 6l1.27-1.26a1 1 0 0 1 1.09-.23l3.12 1.3a1 1 0 0 1 .72 1.01Z"/></svg>
+      </div>
+      <div>
+        Напиши в WhatsApp:
+        <a class="wa" href="https://wa.me/996755188827" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.5 11.5 0 0 0 3.8 18.9L2 22l3.3-1.7A11.5 11.5 0 1 0 20.5 3.5Z"/></svg>
+          +996 755 188 827
+        </a>
+        — укажи категорию, адрес и время. Мы свяжем с лучшим мастером.
+      </div>
+    </div>
+
+    <footer>© 2025 UslugiKant.kg</footer>
+  </div>
+</body>
+</html>
