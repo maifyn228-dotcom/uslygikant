@@ -1,40 +1,33 @@
-/* ==== Живые карточки категорий ==== */
-.cats{margin-top:10px}
-.cat{
-  --bg1:#f7faff; --ring:#e6eaf5;
-  display:block; border:1px solid var(--ring); border-radius:18px;
-  background:linear-gradient(180deg,#ffffff, var(--bg1));
-  padding:16px; box-shadow:var(--shadow-sm);
-  transition:.25s; position:relative; overflow:hidden;
-}
-.cat:hover{transform:translateY(-6px); box-shadow:var(--shadow-md)}
-.cat .top{display:flex; align-items:center; gap:12px}
-.cat .ico{
-  width:56px; height:56px; border-radius:16px; display:grid; place-items:center;
-  background:#eef2ff;
-  box-shadow:inset 0 0 0 1px rgba(2,6,23,.06);
-}
-.cat svg{width:28px; height:28px}
-.cat b{display:block; font-size:16px}
-.cat p{margin:4px 0 0; color:var(--muted); font-size:14px}
+/* ==== FIX: герой, волна и кнопки не обрезаются ==== */
 
-/* подвал карточки */
-.cat .meta{
-  display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:12px
+/* больше места внизу и не режем содержимое */
+.hero{
+  padding-bottom: 96px !important;   /* было ~60px */
+  overflow: visible !important;      /* вместо hidden */
+  position: relative;
 }
-.price{font-weight:800}
-.submuted{color:#8692a6; font-size:13px}
 
-/* цветовые пресеты для разных категорий */
-.cat.rnv  {--bg1:#f5f9ff}.cat.rnv  .ico{background:#e9f0ff}
-.cat.plb  {--bg1:#f3fff9}.cat.plb  .ico{background:#e6fff5}
-.cat.elc  {--bg1:#fff9f3}.cat.elc  .ico{background:#fff0db}
-.cat.cln  {--bg1:#f9f7ff}.cat.cln  .ico{background:#efe9ff}
-.cat.dlv  {--bg1:#f6fbff}.cat.dlv  .ico{background:#e8f4ff}
-.cat.app  {--bg1:#fff7f7}.cat.app  .ico{background:#ffecec}
-
-/* маленькая стрелка при hover */
-.cat::after{
-  content:"→"; position:absolute; right:14px; top:14px; color:#c0c7d4; transition:.25s; font-weight:800
+/* волна ниже контента */
+.hero::after{
+  height: 70px !important;           /* чуть ниже волна */
+  z-index: 1;
 }
-.cat:hover::after{transform:translateX(4px); color:#8fa6ff}
+
+/* кнопки поверх волны и с нормальными отступами */
+.cta{
+  position: relative;
+  z-index: 2;                        /* выше волны */
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.btn{
+  padding: 10px 18px;                /* компактнее */
+  line-height: 1.2;
+  border-radius: 12px;
+}
+
+/* отодвинем следующий блок от волны, чтобы не слипалось */
+section, .wrap > .card, .grid{
+  scroll-margin-top: 90px;           /* для якорей */
+}
