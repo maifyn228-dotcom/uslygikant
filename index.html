@@ -1,21 +1,79 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>UslygiKant.kg — найди мастера в Канте</title>
-  <meta name="description" content="Каталог мастеров Канта: ремонт, сантехника, электрика, уборка, переезды, ремонт техники. Рейтинг, отзывы, быстрый отклик.">
-  <link rel="stylesheet" href="style.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UslygiKant.kg — найди мастера в Канте</title>
+<meta name="description" content="Каталог мастеров Канта: ремонт, сантехника, электрика, уборка, переезды. Рейтинг, отзывы, быстрый отклик.">
+<style>
+:root{--bg:#f6f8fb;--panel:#fff;--line:#e7ebf2;--text:#0f172a;--muted:#5b6b82;--brand:#1fb6ff;--shadow:0 10px 24px rgba(2,6,23,.08)}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+h1{margin:0 0 8px;font-size:40px;line-height:1.15}
+h2{margin:0 0 10px;font-size:26px}
+h3{margin:0 0 6px;font-size:18px}
+.muted{color:var(--muted)}
+/* шапка */
+.topbar{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line)}
+.bar{display:flex;justify-content:space-between;align-items:center;padding:12px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900}
+.dot{width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,#1fb6ff,#60a5fa)}
+.nav a{margin-left:16px;font-weight:600;color:#324155}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:14px;font-weight:800;border:0;cursor:pointer;transition:.2s}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:#0f172a}
+.btn.primary{background:#0f74e6;color:#fff;box-shadow:0 10px 20px rgba(31,182,255,.25)}
+.btn.primary:hover{transform:translateY(-2px)}
+.btn.light{background:#fff;color:#0f74e6;border:1px solid rgba(255,255,255,.9)}
+.btn.light:hover{background:#eaf3ff}
+/* hero */
+.hero{background:linear-gradient(180deg,#1fb6ff 0%,#22a7f0 60%,#1fb6ff 100%);color:#fff;position:relative;padding:56px 0 16px}
+.hero__in{display:flex;align-items:center}
+.hero__text{max-width:680px;text-align:center;margin:0 auto}
+.hero__text p{margin:6px 0 10px;font-size:18px}
+.buttons{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+.wave{line-height:0}.wave svg{display:block;width:100%;height:56px}
+/* секции */
+.section{padding:28px 0}
+.alt{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+/* сетка и плитки */
+.grid{display:grid;gap:16px}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:900px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr}}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+.tile p{color:var(--muted);margin:6px 0 0}
+.t-center{text-align:center}.step{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:10px;background:#e8f4ff;color:#2563eb;font-weight:800;margin-bottom:6px}
+/* карточки категорий */
+.cards .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:6px;box-shadow:var(--shadow);transition:.2s}
+.cards .card:hover{transform:translateY(-4px)}
+.cards .card b{font-size:16px}.cards .card small{color:var(--muted)}.cards .card em{color:#7a889b;font-style:normal;font-size:13px}
+.ico{width:56px;height:56px;border-radius:14px;background:#eef4ff;display:block;position:relative;margin-bottom:4px}
+.ico::after{content:"";position:absolute;inset:12px;border-radius:10px;background:linear-gradient(135deg,#1fb6ff,#60a5fa);mask:center/contain no-repeat}
+.i-paint::after{mask-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill=black d="M2 13h12a2 2 0 1 0 0-4H4V6a2 2 0 0 1 2-2h9a1 1 0 0 1 1 1v3h2V5a3 3 0 0 0-3-3H6a4 4 0 0 0-4 4v7zM14 15H8l-1 3H4v2h7a3 3 0 0 0 3-3v-2z"/></svg>')}
+.i-pipe::after{mask-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill=black d="M3 10h6V6h6v4h6v4h-6v4H9v-4H3z"/></svg>')}
+.i-bolt::after{mask-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill=black d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>')}
+.i-broom::after{mask-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill=black d="M4 18c0-3 2-5 5-5h2l6-9 2 1-6 9v1c0 3-2 5-5 5H4z"/></svg>')}
+.i-truck::after{mask-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill=black d="M3 6h11v7h5l2 3h-2a2 2 0 1 1-4 0H9a2 2 0 1 1-4 0H3z"/></svg>')}
+.i-wrench::after{mask-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill=black d="M21 7a5 5 0 0 1-7 4L7 18l-3-3 7-7a5 5 0 0 1 10-1Z"/></svg>')}
+/* форма */
+.formcard{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+.form{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+.form input,.form select,.form textarea{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px}
+.form textarea{grid-column:1/-1;min-height:110px}
+.form button{justify-self:start}
+/* подвал */
+.foot{border-top:1px solid var(--line);background:#fff}
+.spread{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+/* адаптив */
+@media(max-width:900px){h1{font-size:34px}.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr}}
+@media(max-width:720px){h1{font-size:28px}.hero{padding:44px 0 18px}.form{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-
-<!-- ШАПКА -->
 <header class="topbar">
   <div class="wrap bar">
-    <a class="brand" href="/">
-      <span class="dot"></span>
-      <b>UslygiKant.kg</b>
-    </a>
+    <a class="brand" href="/"><span class="dot"></span><b>UslygiKant.kg</b></a>
     <nav class="nav">
       <a href="#cats">Категории</a>
       <a href="#how">Как это работает</a>
@@ -24,7 +82,6 @@
   </div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <div class="wrap hero__in">
     <div class="hero__text">
@@ -43,95 +100,37 @@
   </div>
 </section>
 
-<!-- ПРЕИМУЩЕСТВА -->
 <section class="section">
   <div class="wrap grid g4">
-    <div class="tile">
-      <h3>Проверенные специалисты</h3>
-      <p>Профили проходят модерацию; у каждого — рейтинг и отзывы.</p>
-    </div>
-    <div class="tile">
-      <h3>Быстрый отклик</h3>
-      <p>Заявки обрабатываются в день обращения.</p>
-    </div>
-    <div class="tile">
-      <h3>Честные цены</h3>
-      <p>Базовые прайсы указаны в карточках категорий.</p>
-    </div>
-    <div class="tile">
-      <h3>Удобная связь</h3>
-      <p>Звонок, WhatsApp или Telegram — как удобно вам.</p>
-    </div>
+    <div class="tile"><h3>Проверенные специалисты</h3><p>Модерация профилей, рейтинг и отзывы.</p></div>
+    <div class="tile"><h3>Быстрый отклик</h3><p>Заявки обрабатываются в день обращения.</p></div>
+    <div class="tile"><h3>Честные цены</h3><p>Базовые прайсы видны в категориях.</p></div>
+    <div class="tile"><h3>Удобная связь</h3><p>Звонок, WhatsApp или Telegram.</p></div>
   </div>
 </section>
 
-<!-- КАТЕГОРИИ -->
 <section id="cats" class="section">
   <div class="wrap">
     <h2>Категории услуг</h2>
     <div class="grid g3 cards">
-      <a class="card" href="/katalog/renovation.html">
-        <span class="ico i-paint"></span>
-        <b>Ремонт и отделка</b>
-        <small>Квартиры под ключ, отделка, дизайн</small>
-        <em>от 1500 сом · ★ 4.8</em>
-      </a>
-      <a class="card" href="/katalog/plumbing.html">
-        <span class="ico i-pipe"></span>
-        <b>Сантехника</b>
-        <small>Протечки, замена труб, установка</small>
-        <em>от 600 сом · ★ 4.7</em>
-      </a>
-      <a class="card" href="/katalog/electric.html">
-        <span class="ico i-bolt"></span>
-        <b>Электрика</b>
-        <small>Проводка, автоматы, свет</small>
-        <em>от 700 сом · ★ 4.8</em>
-      </a>
-      <a class="card" href="/katalog/cleaning.html">
-        <span class="ico i-broom"></span>
-        <b>Уборка</b>
-        <small>Квартиры, офисы, после ремонта</small>
-        <em>от 500 сом · ★ 4.6</em>
-      </a>
-      <a class="card" href="/katalog/delivery.html">
-        <span class="ico i-truck"></span>
-        <b>Переезды и доставка</b>
-        <small>Грузчики, газель, сборка мебели</small>
-        <em>от 800 сом · ★ 4.7</em>
-      </a>
-      <a class="card" href="/katalog/appliances.html">
-        <span class="ico i-wrench"></span>
-        <b>Ремонт техники</b>
-        <small>Стиралки, холодильники</small>
-        <em>от 700 сом · ★ 4.6</em>
-      </a>
+      <a class="card" href="/katalog/renovation.html"><span class="ico i-paint"></span><b>Ремонт и отделка</b><small>Квартиры под ключ, отделка, дизайн</small><em>от 1500 сом · ★ 4.8</em></a>
+      <a class="card" href="/katalog/plumbing.html"><span class="ico i-pipe"></span><b>Сантехника</b><small>Протечки, замена труб, установка</small><em>от 600 сом · ★ 4.7</em></a>
+      <a class="card" href="/katalog/electric.html"><span class="ico i-bolt"></span><b>Электрика</b><small>Проводка, автоматы, свет</small><em>от 700 сом · ★ 4.8</em></a>
+      <a class="card" href="/katalog/cleaning.html"><span class="ico i-broom"></span><b>Уборка</b><small>Квартиры, офисы, после ремонта</small><em>от 500 сом · ★ 4.6</em></a>
+      <a class="card" href="/katalog/delivery.html"><span class="ico i-truck"></span><b>Переезды и доставка</b><small>Грузчики, газель, сборка мебели</small><em>от 800 сом · ★ 4.7</em></a>
+      <a class="card" href="/katalog/appliances.html"><span class="ico i-wrench"></span><b>Ремонт техники</b><small>Стиралки, холодильники</small><em>от 700 сом · ★ 4.6</em></a>
     </div>
   </div>
 </section>
 
-<!-- КАК РАБОТАЕТ -->
 <section id="how" class="section alt">
   <div class="wrap grid g3">
-    <div class="tile t-center">
-      <div class="step">1</div>
-      <h3>Выберите категорию</h3>
-      <p>Или оставьте заявку — подберём мастера рядом с вами.</p>
-    </div>
-    <div class="tile t-center">
-      <div class="step">2</div>
-      <h3>Опишите задачу</h3>
-      <p>Цена и сроки — заранее, связь удобным способом.</p>
-    </div>
-    <div class="tile t-center">
-      <div class="step">3</div>
-      <h3>Получите отклик</h3>
-      <p>Сравните рейтинг и выберите лучшего мастера.</p>
-    </div>
+    <div class="tile t-center"><div class="step">1</div><h3>Выберите категорию</h3><p>Или оставьте заявку — подберём мастера рядом.</p></div>
+    <div class="tile t-center"><div class="step">2</div><h3>Опишите задачу</h3><p>Цена и сроки заранее, связь как удобно.</p></div>
+    <div class="tile t-center"><div class="step">3</div><h3>Получите отклик</h3><p>Сравните рейтинг и выберите лучшего.</p></div>
   </div>
 </section>
 
-<!-- ФОРМА -->
 <section id="lead" class="section">
   <div class="wrap">
     <div class="formcard">
@@ -141,12 +140,8 @@
         <input name="phone" type="tel" placeholder="+996 7xx xxx xxx" required>
         <select name="category" required>
           <option value="">Категория услуги</option>
-          <option>Ремонт и отделка</option>
-          <option>Сантехника</option>
-          <option>Электрика</option>
-          <option>Уборка</option>
-          <option>Переезды и доставка</option>
-          <option>Ремонт техники</option>
+          <option>Ремонт и отделка</option><option>Сантехника</option><option>Электрика</option>
+          <option>Уборка</option><option>Переезды и доставка</option><option>Ремонт техники</option>
         </select>
         <textarea name="task" rows="4" placeholder="Коротко опишите задачу"></textarea>
         <button class="btn primary" type="submit">Отправить заявку</button>
@@ -155,16 +150,12 @@
   </div>
 </section>
 
-<!-- ПОДВАЛ -->
 <footer class="foot">
   <div class="wrap spread">
     <p>© <span id="y"></span> UslygiKant.kg</p>
     <p class="muted"><a href="/policy.html">Политика</a> • <a href="/terms.html">Соглашение</a></p>
   </div>
 </footer>
-
-<script>
-  document.getElementById('y').textContent = new Date().getFullYear();
-</script>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>
 </html>
