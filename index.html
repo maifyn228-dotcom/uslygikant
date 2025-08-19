@@ -1,237 +1,75 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>UslugiKant.kg — Каталог мастеров</title>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UslygiKant.kg — найди мастера в Канте</title>
+<meta name="description" content="Каталог мастеров и сервисов в Канте: рейтинг, отзывы, честные цены и быстрый отклик.">
 <style>
-  :root{
-    --primary:#0ea5e9;        /* голубой */
-    --primary-dark:#0284c7;
-    --bg:#f7fafc;              /* светлый фон */
-    --card:#ffffff;            /* фон карточек */
-    --text:#0f172a;            /* тёмный текст */
-    --muted:#64748b;           /* приглушённый текст */
-    --ring:rgba(14,165,233,.25);
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:var(--text);background:var(--bg)}
-  a{color:inherit;text-decoration:none}
-  .container{max-width:1100px;margin:0 auto;padding:0 20px}
-
-  /* header */
-  header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #e5e7eb}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .logo{display:flex;align-items:center;gap:10px;font-weight:800}
-  .logo-dot{width:12px;height:12px;border-radius:999px;background:var(--primary)}
-  .nav a{margin-left:18px;color:#334155;font-weight:600}
-  .nav a:hover{color:var(--primary-dark)}
-
-  /* hero */
-  .hero{background:linear-gradient(135deg,var(--primary),#38bdf8);color:#fff}
-  .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;padding:60px 0}
-  .hero h1{font-size:40px;line-height:1.1;margin:0 0 10px}
-  .hero p{margin:0 0 20px;color:#e0f2fe}
-  .cta{display:flex;gap:12px;flex-wrap:wrap}
-  .btn{padding:12px 18px;border-radius:999px;font-weight:700;box-shadow:0 6px 20px var(--ring);transition:.2s}
-  .btn-primary{background:#fff;color:var(--primary-dark)}
-  .btn-primary:hover{transform:translateY(-1px);filter:brightness(.98)}
-  .btn-ghost{border:2px solid rgba(255,255,255,.7);color:#fff}
-  .btn-ghost:hover{background:rgba(255,255,255,.12)}
-
-  /* stats */
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px}
-  .chip{background:rgba(255,255,255,.15);backdrop-filter:blur(6px);padding:10px 12px;border-radius:12px;font-weight:700}
-
-  /* categories */
-  .section{padding:40px 0}
-  .section h2{text-align:center;font-size:28px;margin:0 0 24px}
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  @media(max-width:960px){.hero-inner{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:600px){.grid{grid-template-columns:1fr}.hero h1{font-size:30px}}
-
-  .card{background:var(--card);border:1px solid #e5e7eb;border-radius:18px;padding:18px;display:flex;gap:14px;align-items:center;transition:.2s;box-shadow:0 2px 0 #eaf2f9}
-  .card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(14,165,233,.12)}
-  .icon-wrap{min-width:64px;height:64px;border-radius:16px;display:grid;place-items:center;color:#fff}
-  .card h3{margin:0 0 6px;font-size:18px}
-  .card p{margin:0;color:var(--muted);font-size:14px}
-  .meta{margin-top:8px;font-size:13px;color:#475569}
-
-  /* different icon colors */
-  .i-blue{background:#3b82f6}
-  .i-green{background:#22c55e}
-  .i-amber{background:#f59e0b}
-  .i-sky{background:#0ea5e9}
-  .i-violet{background:#8b5cf6}
-  .i-rose{background:#f43f5e}
-
-  /* footer */
-  footer{border-top:1px solid #e5e7eb;background:#fff;padding:18px 0;text-align:center;color:#475569}
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
-  .step{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:16px 18px}
-  .step strong{display:block;margin-bottom:6px}
-</style>
-</head>
-<body>
-
-<header>
-  <div class="container nav">
-    <div class="logo"><span class="logo-dot"></span>UslugiKant.kg</div>
-    <nav>
-      <a href="#cats">Категории</a>
-      <a href="#how">Как это работает</a>
-      <a href="#order">Оставить заявку</a>
-    </nav>
-  </div>
-</header>
-
-<section class="hero">
-  <div class="container hero-inner">
-    <div>
-      <h1>Найди лучшего мастера в Канте</h1>
-      <p>Проверенные специалисты с рейтингом, отзывами и быстрой связью.</p>
-      <div class="cta">
-        <a class="btn btn-primary" href="#cats">Выбрать услугу</a>
-        <a class="btn btn-ghost" href="#order">Оставить заявку</a>
-      </div>
-      <div class="stats">
-        <div class="chip">★ 4.8 средний рейтинг</div>
-        <div class="chip">2 000+ клиентов</div>
-        <div class="chip">Заявки сегодня — есть</div>
-        <div class="chip">Ответ в день обращения</div>
-      </div>
-    </div>
-    <!-- декоративная волна -->
-    <svg viewBox="0 0 500 260" width="100%" height="100%" aria-hidden="true">
-      <defs>
-        <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#38bdf8"/>
-          <stop offset="100%" stop-color="#0ea5e9"/>
-        </linearGradient>
-      </defs>
-      <path d="M0,140 C120,180 180,60 300,100 C380,125 420,120 500,80 L500,260 L0,260 Z" fill="url(#g)" opacity="0.35"/>
-      <path d="M0,160 C120,210 190,110 300,140 C380,165 430,150 500,120 L500,260 L0,260 Z" fill="#ffffff22"/>
-    </svg>
-  </div>
-</section>
-
-<section id="cats" class="section">
-  <div class="container">
-    <h2>Категории услуг</h2>
-
-    <div class="grid">
-      <!-- Ремонт и отделка -->
-      <a class="card" href="/katalog/renovation.html">
-        <div class="icon-wrap i-blue">
-          <!-- кисть -->
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 4l6 6"/><path d="M16 2l6 6-9 9H7v-6l9-9z"/><path d="M7 17s-1 4-4 4 0-3 0-3 3-1 4-1z"/>
-          </svg>
-        </div>
-        <div>
-          <h3>Ремонт и отделка</h3>
-          <p>Квартиры под ключ, отделка, дизайн</p>
-          <div class="meta">от 1500 сом • ★ 4.8</div>
-        </div>
-      </a>
-
-      <!-- Сантехника -->
-      <a class="card" href="/katalog/plumbing.html">
-        <div class="icon-wrap i-green">
-          <!-- труба/кран -->
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 10h6v4H3zM9 12h6M15 5v14M15 8h5v8h-5"/>
-          </svg>
-        </div>
-        <div>
-          <h3>Сантехника</h3>
-          <p>Протечки, замена труб, установка</p>
-          <div class="meta">от 600 сом • ★ 4.7</div>
-        </div>
-      </a>
-
-      <!-- Электрика -->
-      <a class="card" href="/katalog/electric.html">
-        <div class="icon-wrap i-amber">
-          <!-- молния -->
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/>
-          </svg>
-        </div>
-        <div>
-          <h3>Электрика</h3>
-          <p>Проводка, автоматы, свет</p>
-          <div class="meta">от 700 сом • ★ 4.6</div>
-        </div>
-      </a>
-
-      <!-- Уборка -->
-      <a class="card" href="/katalog/cleaning.html">
-        <div class="icon-wrap i-sky">
-          <!-- метла -->
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 21l6-6"/><path d="M15 3l6 6"/><path d="M5 19l3 3 3-3-3-3-3 3z"/><path d="M12 12l6-6"/>
-          </svg>
-        </div>
-        <div>
-          <h3>Уборка</h3>
-          <p>Квартиры, офисы, после ремонта</p>
-          <div class="meta">от 500 сом • ★ 4.6</div>
-        </div>
-      </a>
-
-      <!-- Переезды -->
-      <a class="card" href="/katalog/delivery.html">
-        <div class="icon-wrap i-violet">
-          <!-- грузовик -->
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="1" y="7" width="13" height="8" rx="1"/><path d="M14 9h4l4 3v3h-4"/><circle cx="6" cy="17" r="2"/><circle cx="18" cy="17" r="2"/>
-          </svg>
-        </div>
-        <div>
-          <h3>Переезды и доставка</h3>
-          <p>Грузчики, газель, сборка мебели</p>
-          <div class="meta">от 800 сом • ★ 4.7</div>
-        </div>
-      </a>
-
-      <!-- Ремонт техники -->
-      <a class="card" href="/katalog/appliance.html">
-        <div class="icon-wrap i-rose">
-          <!-- ключ/отвёртка -->
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14.7 6.3a4 4 0 105.66 5.66L14.7 6.3z"/><path d="M13 7l-9 9 3 3 9-9"/>
-          </svg>
-        </div>
-        <div>
-          <h3>Ремонт техники</h3>
-          <p>Стиральные, холодильники</p>
-          <div class="meta">от 700 сом • ★ 4.5</div>
-        </div>
-      </a>
-    </div>
-
-    <div id="how" class="steps">
-      <div class="step"><strong>1. Выберите категорию</strong> Или оставьте заявку — подберём мастера рядом.</div>
-      <div class="step"><strong>2. Опишите задачу</strong> Сроки и бюджет, связь как удобно.</div>
-      <div class="step"><strong>3. Получите отклик</strong> Сравните рейтинг и выберите мастера.</div>
-    </div>
-  </div>
-</section>
-
-<section id="order" class="section">
-  <div class="container">
-    <h2 style="text-align:center;margin-bottom:18px">Оставить заявку</h2>
-    <div class="step" style="max-width:720px;margin:0 auto">
-      Напиши в WhatsApp: <a href="https://wa.me/996755188827" target="_blank" style="color:var(--primary-dark);font-weight:700">+996 755 188 827</a> — укажи категорию, адрес и время. Мы свяжем с лучшим мастером.
-    </div>
-  </div>
-</section>
-
-<footer>
-  © 2025 UslugiKant.kg
-</footer>
-
-</body>
-</html>
+/* ====== БАЗА ====== */
+:root{
+  --bg:#f7f9fb; --card:#ffffff; --text:#0f172a; --muted:#64748b;
+  --primary:#0ea5e9; --primary-2:#0284c7; --ok:#22c55e; --warn:#f59e0b;
+  --border:#e5e7eb; --shadow:0 10px 30px rgba(2,132,199,.12)
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font:16px/1.55 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica Neue,sans-serif;
+  color:var(--text); background:var(--bg)
+}
+a{color:var(--primary-2); text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:1100px;margin:0 auto;padding:0 18px}
+.section{padding:48px 0}
+h1,h2,h3{margin:0 0 14px}
+h1{font-size:clamp(28px,4.6vw,40px);line-height:1.15;letter-spacing:.2px}
+h2{font-size:clamp(22px,3.5vw,28px)}
+p{margin:0 0 12px;color:var(--muted)}
+.small{font-size:13px;color:var(--muted)}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:999px;background:#e0f2fe;color:#075985;font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid transparent;font-weight:700}
+.btn--fill{background:var(--primary);color:white;box-shadow:0 8px 26px rgba(14,165,233,.25)}
+.btn--fill:hover{filter:brightness(.98);transform:translateY(-1px)}
+.btn--ghost{background:white;border-color:var(--border);color:var(--text)}
+.btn--ghost:hover{border-color:#cbd5e1;transform:translateY(-1px)}
+.grid{display:grid;gap:18px}
+.card{
+  background:var(--card);border:1px solid var(--border);border-radius:16px;
+  box-shadow:var(--shadow);padding:18px
+}
+/* ====== ХЕДЕР ====== */
+.header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.7);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid #eef2f7}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900}
+.brand .dot{width:12px;height:12px;border-radius:50%;background:var(--primary)}
+.nav{display:flex;gap:18px;align-items:center}
+.nav a{color:var(--muted)}
+.nav a:hover{color:var(--primary-2)}
+/* ====== HERO ====== */
+.hero{
+  background:linear-gradient(180deg,#0ea5e9 0%,#38bdf8 100%);
+  color:white;padding:56px 0 26px;position:relative;overflow:hidden
+}
+.hero:after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:24px;
+  background:radial-gradient(60% 24px at 50% 0,#0ea5e9 0,transparent 70%);
+  opacity:.35
+}
+.hero .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.hero p{color:#e6f6ff}
+/* ====== ИКОНКИ (SVG) ====== */
+.icon{
+  width:52px;height:52px;display:inline-flex;align-items:center;justify-content:center;
+  border-radius:14px;color:white;box-shadow:0 10px 22px rgba(2,132,199,.18)
+}
+.i-blue{background:#3b82f6}
+.i-green{background:#22c55e}
+.i-amber{background:#f59e0b}
+.i-rose{background:#f43f5e}
+.i-slate{background:#475569}
+/* ====== ПЛЮСЫ ====== */
+.features{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.feature{display:flex;gap:12px;align-items:flex-start}
+.feature h3{margin:2px 0 6px;font-size:18px}
+/* ====== КАТЕГОРИИ ====== */
+.categories{grid-template-columns:
