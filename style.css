@@ -26,6 +26,26 @@ a{color:inherit;text-decoration:none}
 .top-nav .badge{color:#fff;background:var(--accent);padding:8px 12px;border-radius:999px}
 
 /* Hero */
+/* Карточки категорий */
+.card {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 18px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.card:hover {
+  background: #4CAF50;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
 .hero{background:linear-gradient(180deg,#e8fbff 0%,#f7fcff 60%,transparent 100%);position:relative}
 .hero-inner{display:grid;grid-template-columns:1.3fr .7fr;gap:24px;align-items:center;padding:36px 0}
 .hero-text h1{margin:0 0 8px;font-weight:800;font-size:36px;letter-spacing:.3px}
