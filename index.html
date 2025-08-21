@@ -1,393 +1,145 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>UslugiKant.kg — каталог услуг в Канте</title>
-<meta name="description" content="Найдите мастера в Канте: ремонт, сантехника, электрика, уборка, переезды и др. Связь с исполнителем напрямую."/>
-<style>
-:root{
-  --brand:#10b981;           /* фирменный зелёный */
-  --brand-2:#0ea5e9;         /* акцент голубой */
-  --text:#0f172a;            /* тёмный текст */
-  --muted:#667085;           /* вторичный текст */
-  --bg:#f6f8fb;              /* фон */
-  --card:#ffffff;            /* карточки */
-  --radius:18px;
-  --shadow:0 10px 28px rgba(2,6,23,.08);
-}
-*{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--text);
-  font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial}
-a{color:inherit;text-decoration:none}
-.container{max-width:1200px;margin:0 auto;padding:0 20px}
-
-/* ====== верхняя панель (как у маркетплейса) ====== */
-.topbar{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #eef1f6}
-.topbar .row{display:flex;align-items:center;gap:14px;height:64px}
-.logo{display:flex;align-items:center;gap:10px;font-weight:800}
-.logo-badge{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
-  color:#fff;background:linear-gradient(135deg,var(--brand),#34d399)}
-.nav{display:flex;align-items:center;gap:16px;margin-left:auto}
-.nav a{color:var(--muted);font-weight:600}
-.nav a:hover{color:var(--text)}
-.post-btn{background:var(--brand);color:#fff;border:0;border-radius:999px;
-  padding:10px 16px;font-weight:800}
-.searchbar{flex:1;display:flex;gap:8px;align-items:center;margin-left:12px}
-.searchbar input{flex:1;min-width:160px;padding:12px 14px;border:1px solid #e5e7eb;border-radius:12px;background:#fafafa}
-.searchbar button{padding:12px 14px;border-radius:12px;border:1px solid #e5e7eb;background:#fff;font-weight:700}
-@media (max-width:920px){ .searchbar{display:none} }
-
-/* ====== горизонтальные чипы категорий ====== */
-.chips{background:#fff;border-bottom:1px solid #eef1f6}
-.chips .track{display:flex;gap:10px;overflow:auto;scrollbar-width:none;padding:10px 0}
-.chip{flex:0 0 auto;display:flex;align-items:center;gap:8px;background:#eff6ff;
-  color:#1e40af;border-radius:999px;padding:8px 12px;font-weight:700}
-.chip svg{opacity:.9}
-.chip:hover{background:#e0f2fe}
-
-/* ====== герой ====== */
-.hero{background:linear-gradient(180deg,#e8fff5,#fff);border-radius:26px;margin:18px 0;padding:28px 22px;position:relative;overflow:hidden}
-.hero h1{margin:0 0 8px;font-size:32px;line-height:1.15}
-.hero p{margin:0 0 16px;color:var(--muted)}
-.hero-cta{display:flex;gap:10px;flex-wrap:wrap}
-.btn{padding:12px 18px;border-radius:12px;border:1px solid #e5e7eb;background:#fff;font-weight:800}
-.btn-primary{background:var(--brand);border-color:var(--brand);color:#fff}
-.hero-bubbles{position:absolute;inset:auto -10% -35% -10%;height:160px;opacity:.65;
-  background:
-  radial-gradient(140px 70px at 12% 55%, #fff 46%, #0000 47%),
-  radial-gradient(140px 70px at 36% 40%, #fff 46%, #0000 47%),
-  radial-gradient(140px 70px at 62% 60%, #fff 46%, #0000 47%),
-  radial-gradient(140px 70px at 86% 42%, #fff 46%, #0000 47%);}
-
-/* ====== сетки ====== */
-.grid{display:grid;gap:18px}
-.cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
-.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-@media (max-width:1100px){.cols-4{grid-template-columns:repeat(3,1fr)}}
-@media (max-width:860px){.cols-3{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:640px){.cols-4,.cols-3{grid-template-columns:1fr}.hero h1{font-size:26px}}
-
-/* ====== карточки преимуществ ====== */
-.feature{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;display:flex;gap:12px}
-.fe-ico{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;color:#fff}
-.fe-blue{background:linear-gradient(135deg,#60a5fa,#3b82f6)}
-.fe-green{background:linear-gradient(135deg,#34d399,#10b981)}
-.fe-amber{background:linear-gradient(135deg,#fbbf24,#f59e0b)}
-.fe-red{background:linear-gradient(135deg,#fb7185,#ef4444)}
-.feature h3{margin:2px 0 4px;font-size:18px}
-.feature p{margin:0;color:var(--muted);font-size:14px}
-
-/* ====== плитки категорий (как у lalafo) ====== */
-.tile{position:relative;border-radius:18px;overflow:hidden;min-height:150px;box-shadow:var(--shadow);display:block}
-.tile img{width:100%;height:100%;object-fit:cover;display:block}
-.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,6,23,0),rgba(2,6,23,.55))}
-.tile .label{position:absolute;left:14px;bottom:14px;color:#fff;font-weight:900}
-.tile .sub{position:absolute;left:14px;bottom:14px;color:#e2e8f0;font-size:13px;transform:translateY(18px)}
-.tile:hover{transform:translateY(-2px)} .tile:hover .sub{transform:translateY(0)}
-
-/* ====== тулбар списка ====== */
-.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:8px 0 12px}
-.badge{background:#ecfeff;color:#155e75;border:1px solid #cffafe;border-radius:999px;padding:6px 10px;font-weight:800}
-.select,.select:focus{border:1px solid #e5e7eb;border-radius:12px;padding:10px 12px;background:#fff}
-
-/* ====== карточки объявлений ====== */
-.card{background:#fff;border-radius:16px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
-.card .pic{position:relative;aspect-ratio:4/3;overflow:hidden}
-.card img{width:100%;height:100%;object-fit:cover;display:block}
-.like{position:absolute;right:10px;top:10px;background:#ffffffc9;border-radius:999px;padding:8px;display:grid;place-items:center}
-.card .body{padding:12px}
-.title{font-weight:900;margin:0 0 4px}
-.meta{color:var(--muted);font-size:14px}
-.price{font-weight:900;margin-top:6px}
-.stars{color:#f59e0b}
-.actions{display:flex;gap:8px;margin-top:10px}
-.act{flex:1;padding:10px 12px;border-radius:10px;border:1px solid #e5e7eb;background:#fff;font-weight:800}
-.act.primary{background:var(--brand);border-color:var(--brand);color:#fff}
-.hidden{display:none}
-
-/* ====== как это работает + футер ====== */
-.steps{background:#fff;border-radius:20px;padding:18px;box-shadow:var(--shadow)}
-.step{display:flex;gap:12px;align-items:flex-start}
-.bubble{width:28px;height:28px;border-radius:9px;background:#e2e8f0;display:grid;place-items:center;font-weight:800}
-footer{padding:40px 0;color:var(--muted);text-align:center}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UslugiKant.kg — каталог мастеров и услуг в Канте</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">
+        <span class="brand-dot"></span>
+        <span class="brand-name">UslugiKant<span class="brand-zone">.kg</span></span>
+      </a>
 
-<!-- ====== TOP BAR ====== -->
-<div class="topbar">
-  <div class="container row">
-    <div class="logo">
-      <div class="logo-badge">U</div>
-      <div>UslugiKant.kg</div>
+      <nav class="top-nav">
+        <a href="#how">Как это работает</a>
+        <a href="#for-masters" class="badge">Для мастеров</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="searchbar">
-      <input id="q" type="search" placeholder="Поиск: сантехник, плитка, электрик…">
-      <button onclick="doSearch()">Найти</button>
-    </div>
-
-    <div class="nav">
-      <a href="#cats">Категории</a>
-      <a href="#how">Как это работает</a>
-      <a class="post-btn" href="mailto:hello@uslugikant.kg?subject=Хочу размещаться на UslugiKant.kg&body=Имя%3A%0AКатегория%3A%0AОписание%3A%0AТелефон%3A%0AСсылка%20на%20фото%3A">Для мастеров</a>
-    </div>
-  </div>
-</div>
-
-<!-- ====== CHIPS ====== -->
-<div class="chips">
-  <div class="container">
-    <div class="track" id="chipTrack"></div>
-  </div>
-</div>
-
-<!-- ====== HERO ====== -->
-<div class="container">
   <section class="hero">
-    <h1>Найдите мастера в Канте — быстро, красиво и по делу</h1>
-    <p>Плитка, электрика, уборка, переезды и многое другое. Клиент звонит исполнителю напрямую — без посредников.</p>
-    <div class="hero-cta">
-      <button class="btn-primary btn" onclick="scrollToCats()">Выбрать категорию</button>
-      <button class="btn" onclick="showAll()">Показать всех исполнителей</button>
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <h1>Найдите мастера в Канте — быстро и по делу</h1>
+        <p class="sub">Клиент звонит исполнителю напрямую — без посредников. Проверенные профили, отзывы и базовые прайсы.</p>
+        <div class="hero-actions">
+          <a href="#catalog" class="btn btn-primary">Выбрать услугу</a>
+          <a href="#for-masters" class="btn btn-soft">Стать исполнителем</a>
+        </div>
+      </div>
+      <div class="hero-kpis">
+        <div class="kpi"><strong>4.8★</strong><span>средний рейтинг</span></div>
+        <div class="kpi"><strong>2 000+</strong><span>клиентов</span></div>
+        <div class="kpi"><strong>сегодня</strong><span>есть отклики</span></div>
+      </div>
     </div>
-    <div class="hero-bubbles"></div>
+    <div class="hero-wave" aria-hidden="true"></div>
   </section>
 
-  <!-- Преимущества -->
-  <section class="grid cols-4" style="margin:10px 0 18px">
-    <div class="feature">
-      <div class="fe-ico fe-green">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+  <main>
+    <section id="benefits" class="container benefits">
+      <div class="benefit">
+        <div class="icon">🛡️</div>
+        <h3>Проверенные профили</h3>
+        <p>Модерация анкеты, рейтинг и отзывы клиентов.</p>
       </div>
-      <div><h3>Проверенные профили</h3><p>Отзывы, рейтинг и модерация анкет.</p></div>
-    </div>
-    <div class="feature">
-      <div class="fe-ico fe-blue">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      <div class="benefit">
+        <div class="icon">⚡</div>
+        <h3>Быстрый отклик</h3>
+        <p>Большинство заявок обрабатываются в день обращения.</p>
       </div>
-      <div><h3>Быстрый отклик</h3><p>Обычно в день обращения.</p></div>
-    </div>
-    <div class="feature">
-      <div class="fe-ico fe-amber">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 7l-8-4-8 4 8 4 8-4z"/><path d="M5 8v6l8 4 8-4V8"/></svg>
+      <div class="benefit">
+        <div class="icon">💳</div>
+        <h3>Честные цены</h3>
+        <p>Базовые прайсы указаны в карточках категорий.</p>
       </div>
-      <div><h3>Честные цены</h3><p>Стартовые прайсы указаны заранее.</p></div>
-    </div>
-    <div class="feature">
-      <div class="fe-ico fe-red">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92V21a1 1 0 0 1-1.1 1 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 11.73 19.79 19.79 0 0 1 0 3.1 1 1 0 0 1 1 2h4.09A1 1 0 0 1 6.1 2.72l1.3 3.12a1 1 0 0 1-.23 1.09L5.91 8.2a16 16 0 0 0 6 6l1.27-1.26a1 1 0 0 1 1.09-.23l3.12 1.3a1 1 0 0 1 .72 1.01Z"/></svg>
+      <div class="benefit">
+        <div class="icon">☎️</div>
+        <h3>Связь напрямую</h3>
+        <p>Вы сами выбираете мастера и звоните ему напрямую.</p>
       </div>
-      <div><h3>Связь напрямую</h3><p>Телефон мастера — по кнопке в карточке.</p></div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Категории -->
-  <h2 id="cats" style="margin:0 0 10px">Категории услуг</h2>
-  <section id="tiles" class="grid cols-4" style="margin-bottom:6px"></section>
+    <!-- Каталог -->
+    <section id="catalog" class="container catalog">
+      <div class="catalog-head">
+        <h2>Категории услуг</h2>
+        <div class="search">
+          <input id="searchInput" type="search" placeholder="Поиск по категориям и подкатегориям…" />
+        </div>
+      </div>
 
-  <!-- Тулбар -->
-  <div class="toolbar">
-    <span class="badge" id="activeBadge">Все категории</span>
-    <select id="sort" class="select" onchange="renderCards()">
-      <option value="rating">Сортировка: рейтинг</option>
-      <option value="price">Сортировка: цена</option>
-      <option value="name">Сортировка: имя</option>
-    </select>
-    <select id="minRating" class="select" onchange="renderCards()">
-      <option value="0">Рейтинг: любой</option>
-      <option value="4.0">от 4.0</option>
-      <option value="4.5">от 4.5</option>
-      <option value="4.8">от 4.8</option>
-    </select>
+      <div id="categoriesGrid" class="grid"></div>
+    </section>
+
+    <!-- Как это работает -->
+    <section id="how" class="container how">
+      <h2>Как это работает</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">1</span>
+          <h3>Выберите категорию</h3>
+          <p>Или воспользуйтесь поиском по каталогу.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <h3>Найдите исполнителя</h3>
+          <p>Сравните рейтинг, прайсы и отзывы — позвоните напрямую.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <h3>Получите результат</h3>
+          <p>Договоритесь об удобном времени и оплате.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Для мастеров -->
+    <section id="for-masters" class="cta">
+      <div class="container cta-inner">
+        <div>
+          <h2>Вы — мастер или сервис?</h2>
+          <p>Размещайте свои услуги и получайте клиентов из Канты.</p>
+        </div>
+        <a class="btn btn-primary" href="mailto:hello@uslugikant.kg">Разместить услуги</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="foot-brand">
+        <span class="brand-dot"></span>
+        <strong>UslugiKant.kg</strong>
+      </div>
+      <nav class="foot-nav">
+        <a href="#catalog">Каталог</a>
+        <a href="#how">Как это работает</a>
+        <a href="#for-masters">Для мастеров</a>
+      </nav>
+      <div class="copy">© 2025 UslugiKant.kg</div>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="modal" class="modal hidden" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Закрыть">×</button>
+      <h3 id="modalTitle">Категория</h3>
+      <div id="modalChips" class="chips"></div>
+      <div class="modal-actions">
+        <button class="btn btn-soft" id="modalClose2">Закрыть</button>
+      </div>
+    </div>
   </div>
 
-  <!-- Объявления -->
-  <section id="cards" class="grid cols-3"></section>
-
-  <!-- Как это работает -->
-  <h2 id="how" style="margin:16px 0 10px">Как это работает</h2>
-  <section class="steps grid cols-3">
-    <div class="step"><div class="bubble">1</div><div><strong>Выберите категорию</strong><br/>Листайте мастеров с фото, ценами и рейтингом.</div></div>
-    <div class="step"><div class="bubble">2</div><div><strong>Сравните варианты</strong><br/>Опыт, описание и отзывы — всё в карточке.</div></div>
-    <div class="step"><div class="bubble">3</div><div><strong>Звоните напрямую</strong><br/>Никаких посредников — кнопка «Показать телефон».</div></div>
-  </section>
-
-  <footer>© 2025 UslugiKant.kg · Размещение платное для исполнителей</footer>
-</div>
-
-<script>
-/* ============== ДАННЫЕ ============== */
-const categories = [
-  { id:'remont',  name:'Ремонт и отделка', sub:'Плитка, шпаклёвка, дизайн', priceFrom:1500,
-    img:'https://images.unsplash.com/photo-1501045661006-fcebe0257c3f?q=80&w=1200&auto=format&fit=crop',
-    icon:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M9 8h6v13H9z"/><path d="M7 3h10v5H7z"/></svg>`
-  },
-  { id:'santeh',  name:'Сантехника', sub:'Трубы, смесители, протечки', priceFrom:600,
-    img:'https://images.unsplash.com/photo-1603006905003-c9c75533f7b0?q=80&w=1200&auto=format&fit=crop',
-    icon:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h18"/><path d="M7 9v4a5 5 0 0 0 10 0V9"/></svg>`
-  },
-  { id:'electro', name:'Электрика', sub:'Проводка, автоматы, свет', priceFrom:700,
-    img:'https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop',
-    icon:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>`
-  },
-  { id:'clean',   name:'Уборка', sub:'Квартиры, офисы, после ремонта', priceFrom:500,
-    img:'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1200&auto=format&fit=crop',
-    icon:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 3h16"/><path d="M6 3v7a6 6 0 0 0 12 0V3"/></svg>`
-  },
-  { id:'move',    name:'Переезды и доставка', sub:'Грузчики, газель, сборка', priceFrom:800,
-    img:'https://images.unsplash.com/photo-1544829728-e5cbdd6b7d00?q=80&w=1200&auto=format&fit=crop',
-    icon:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="7" width="13" height="8"/><path d="M14 11h4l3 3v1H14z"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>`
-  },
-  { id:'appl',    name:'Ремонт техники', sub:'Стиралки, холодильники', priceFrom:700,
-    img:'https://images.unsplash.com/photo-1616627457712-0406b0a2e038?q=80&w=1200&auto=format&fit=crop',
-    icon:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="7" r="2"/></svg>`
-  }
-];
-
-const items = [
-  { id:1, cat:'remont', title:'Отделка квартир под ключ', price:1500, rating:4.8, city:'Кант',
-    photo:'https://images.unsplash.com/photo-1597004895286-5a50a0d5bd2c?q=80&w=900&auto=format&fit=crop',
-    user:'Азат • мастер', desc:'Плитка, гипс, малярка. Договор и гарантия.', phone:'+996 555 111 222'
-  },
-  { id:2, cat:'santeh', title:'Сантехник — трубы/смесители', price:600, rating:4.7, city:'Кант',
-    photo:'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=900&auto=format&fit=crop',
-    user:'Нурбек', desc:'Устранение протечек, замена труб, установка унитаза/шкафа.', phone:'+996 555 222 333'
-  },
-  { id:3, cat:'electro', title:'Электрик — проводка, автоматы', price:700, rating:4.9, city:'Кант',
-    photo:'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=900&auto=format&fit=crop',
-    user:'Эмиль', desc:'Освещение, щиток, тёплый пол. Чисто и безопасно.', phone:'+996 555 333 444'
-  },
-  { id:4, cat:'clean', title:'Генеральная уборка', price:500, rating:4.6, city:'Кант',
-    photo:'https://images.unsplash.com/photo-1581579188871-45ea61f2a0c8?q=80&w=900&auto=format&fit=crop',
-    user:'Айдана', desc:'Квартиры/офисы, уборка после ремонта.', phone:'+996 555 444 555'
-  },
-  { id:5, cat:'move', title:'Переезды, грузчики, газель', price:800, rating:4.7, city:'Кант',
-    photo:'https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=900&auto=format&fit=crop',
-    user:'Дастан', desc:'Переезды по городу, упаковка, сборка мебели.', phone:'+996 555 555 666'
-  },
-  { id:6, cat:'appl', title:'Ремонт стиралок и холодильников', price:700, rating:4.6, city:'Кант',
-    photo:'https://images.unsplash.com/photo-1581093458791-9d1d2d99d1d6?q=80&w=900&auto=format&fit=crop',
-    user:'Рустам', desc:'Выезд и диагностика, оригинальные запчасти.', phone:'+996 555 666 777'
-  },
-  { id:7, cat:'remont', title:'Плиточник • ванны/кухни', price:1200, rating:4.8, city:'Кант',
-    photo:'https://images.unsplash.com/photo-1540569014015-19a7be504e3a?q=80&w=900&auto=format&fit=crop',
-    user:'Калыс', desc:'Ровно, красиво, в срок. Помощь с закупом.', phone:'+996 555 777 888'
-  },
-  { id:8, cat:'clean', title:'Химчистка диванов/ковров', price:600, rating:4.7, city:'Кант',
-    photo:'https://images.unsplash.com/photo-1593465451318-9b04a8a9f7ab?q=80&w=900&auto=format&fit=crop',
-    user:'CleanPro', desc:'Биоразложимые средства. Безопасно для детей и животных.', phone:'+996 555 000 111'
-  }
-];
-
-/* ============== УТИЛИТЫ ============== */
-function el(tag, attrs={}, ...kids){
-  const n=document.createElement(tag);
-  for(const k in attrs){
-    if(k==='class') n.className=attrs[k];
-    else if(k==='html') n.innerHTML=attrs[k];
-    else n.setAttribute(k, attrs[k]);
-  }
-  kids.forEach(c=>n.appendChild(typeof c==='string'?document.createTextNode(c):c));
-  return n;
-}
-
-let currentCat=null;
-
-function renderChips(){
-  const t=document.getElementById('chipTrack'); t.innerHTML='';
-  const all=el('a',{href:'#',class:'chip',onclick:'showAll();return false;',html:svgTag('grid')+' Все'});
-  t.appendChild(all);
-  categories.forEach(c=>{
-    const a=el('a',{href:'#',class:'chip',onclick:`filter('${c.id}');return false;`,html:c.icon+' '+c.name});
-    t.appendChild(a);
-  });
-}
-
-function renderTiles(){
-  const wrap=document.getElementById('tiles'); wrap.innerHTML='';
-  categories.forEach(c=>{
-    const a=el('a',{href:'#',class:'tile',onclick:`filter('${c.id}');return false;`},
-      el('img',{src:c.img,alt:c.name,loading:'lazy'}),
-      el('div',{class:'label',html:c.name}),
-      el('div',{class:'sub',html:`от ${c.priceFrom} сом`})
-    );
-    wrap.appendChild(a);
-  });
-}
-
-function renderCards(){
-  const list=document.getElementById('cards'); list.innerHTML='';
-  const q=(document.getElementById('q').value||'').toLowerCase().trim();
-  const minR=parseFloat(document.getElementById('minRating').value||'0');
-  const sort=document.getElementById('sort').value;
-
-  let arr=items
-    .filter(x=>!currentCat || x.cat===currentCat)
-    .filter(x=>x.rating>=minR)
-    .filter(x=>!q || [x.title,x.user,x.desc].join(' ').toLowerCase().includes(q));
-
-  arr.sort((a,b)=>{
-    if(sort==='price') return a.price-b.price;
-    if(sort==='name') return a.title.localeCompare(b.title);
-    return b.rating-a.rating;
-  });
-
-  if(arr.length===0){
-    list.appendChild(el('div',{class:'feature'},
-      el('div',{class:'fe-ico fe-amber',html:'❔'}),
-      el('div',{html:'Ничего не найдено. Попробуйте другой запрос или категорию.'})
-    ));
-    return;
-  }
-
-  arr.forEach(x=>{
-    const card=el('div',{class:'card'});
-    const pic=el('div',{class:'pic'},
-      el('img',{src:x.photo,alt:x.title,loading:'lazy'}),
-      el('div',{class:'like',title:'Добавить в избранное',html:svgTag('heart')})
-    );
-    const body=el('div',{class:'body'},
-      el('div',{class:'title'},x.title),
-      el('div',{class:'meta'},`${x.user} · ${x.city}`),
-      el('div',{class:'meta'},`${'★'.repeat(Math.round(x.rating))} `, el('span',{class:'stars'},x.rating.toFixed(1))),
-      el('div',{class:'price'},`от ${x.price} сом`),
-      el('div',{class:'meta'},x.desc),
-      el('div',{class:'actions'},
-        el('button',{class:'act primary',onclick:`reveal(${x.id})`,id:`b${x.id}`},'Показать телефон'),
-        el('a',{href:`https://wa.me/${x.phone.replace(/\D/g,'')}`,target:'_blank',class:'act'},'WhatsApp')
-      ),
-      el('div',{id:`p${x.id}`,class:'meta hidden',html:`📞 <b>${x.phone}</b>`})
-    );
-    card.append(pic,body); list.appendChild(card);
-  });
-
-  document.getElementById('activeBadge').textContent = currentCat
-    ? (categories.find(c=>c.id===currentCat)||{}).name
-    : 'Все категории';
-}
-
-function reveal(id){
-  document.getElementById('b'+id).classList.add('hidden');
-  document.getElementById('p'+id).classList.remove('hidden');
-}
-
-function filter(id){ currentCat=id; renderCards(); scrollToCards(); }
-function showAll(){ currentCat=null; document.getElementById('q').value=''; renderCards(); scrollToCards(); }
-function doSearch(){ currentCat=null; renderCards(); scrollToCards(); }
-
-function scrollToCats(){ document.getElementById('cats').scrollIntoView({behavior:'smooth'}); }
-function scrollToCards(){ document.getElementById('cards').scrollIntoView({behavior:'smooth'}); }
-
-function svgTag(kind){
-  if(kind==='grid') return `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>`;
-  if(kind==='heart')return `<svg width="18" height="18" viewBox="0 0 24 24" fill="#ef4444"><path d="M12 21s-7.5-4.35-9.5-8.5C.5 8.5 3 5 6.5 5c2 0 3.5 1 5.5 3 2-2 3.5-3 5.5-3C21 5 23.5 8.5 21.5 12.5 19.5 16.65 12 21 12 21z"/></svg>`;
-  return '';
-}
-
-/* старт */
-renderChips(); renderTiles(); renderCards();
-</script>
+  <script src="./script.js"></script>
 </body>
 </html>
