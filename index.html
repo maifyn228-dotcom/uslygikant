@@ -17,6 +17,8 @@
       </a>
 
       <nav class="top-nav">
+        <a href="#catalog">Каталог</a>
+        <a href="#masters">Исполнители</a>
         <a href="#how">Как это работает</a>
         <a href="#for-masters" class="badge">Для мастеров</a>
       </nav>
@@ -43,6 +45,7 @@
   </section>
 
   <main>
+    <!-- Преимущества -->
     <section id="benefits" class="container benefits">
       <div class="benefit">
         <div class="icon">🛡️</div>
@@ -74,72 +77,12 @@
           <input id="searchInput" type="search" placeholder="Поиск по категориям и подкатегориям…" />
         </div>
       </div>
-
       <div id="categoriesGrid" class="grid"></div>
     </section>
 
-    <!-- Как это работает -->
-    <section id="how" class="container how">
-      <h2>Как это работает</h2>
-      <div class="steps">
-        <div class="step">
-          <span class="step-num">1</span>
-          <h3>Выберите категорию</h3>
-          <p>Или воспользуйтесь поиском по каталогу.</p>
-        </div>
-        <div class="step">
-          <span class="step-num">2</span>
-          <h3>Найдите исполнителя</h3>
-          <p>Сравните рейтинг, прайсы и отзывы — позвоните напрямую.</p>
-        </div>
-        <div class="step">
-          <span class="step-num">3</span>
-          <h3>Получите результат</h3>
-          <p>Договоритесь об удобном времени и оплате.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Для мастеров -->
-    <section id="for-masters" class="cta">
-      <div class="container cta-inner">
-        <div>
-          <h2>Вы — мастер или сервис?</h2>
-          <p>Размещайте свои услуги и получайте клиентов из Канты.</p>
-        </div>
-        <a class="btn btn-primary" href="mailto:hello@uslugikant.kg">Разместить услуги</a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="foot-brand">
-        <span class="brand-dot"></span>
-        <strong>UslugiKant.kg</strong>
-      </div>
-      <nav class="foot-nav">
-        <a href="#catalog">Каталог</a>
-        <a href="#how">Как это работает</a>
-        <a href="#for-masters">Для мастеров</a>
-      </nav>
-      <div class="copy">© 2025 UslugiKant.kg</div>
-    </div>
-  </footer>
-
-  <!-- Modal -->
-  <div id="modal" class="modal hidden" aria-hidden="true">
-    <div class="modal-backdrop"></div>
-    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal-close" id="modalClose" aria-label="Закрыть">×</button>
-      <h3 id="modalTitle">Категория</h3>
-      <div id="modalChips" class="chips"></div>
-      <div class="modal-actions">
-        <button class="btn btn-soft" id="modalClose2">Закрыть</button>
-      </div>
-    </div>
-  </div>
-
-  <script src="./script.js"></script>
-</body>
-</html>
+    <!-- Исполнители -->
+    <section id="masters" class="container masters">
+      <div class="masters-head">
+        <h2>Топ исполнители</h2>
+        <div class="masters-filters">
+          <select id="categoryFilter
